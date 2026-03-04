@@ -1,0 +1,58 @@
+{
+  "kind": "singleType",
+  "collectionName": "globals",
+  "info": {
+    "singularName": "global",
+    "pluralName": "globals",
+    "displayName": "Global"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "siteName": {
+      "type": "string"
+    },
+    "navVariant": {
+      "type": "enumeration",
+      "default": "header",
+      "enum": [
+        "header",
+        "sidebar"
+      ]
+    },
+    "seo": {
+      "type": "component",
+      "component": "shared.seo",
+      "repeatable": false
+    },
+    "navItems": {
+      "type": "component",
+      "component": "elements.nav-item",
+      "repeatable": true
+    },
+    "footer": {
+      "type": "component",
+      "component": "shared.footer",
+      "repeatable": false
+    },
+    "logo": {
+      "type": "media",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    }
+  }
+}

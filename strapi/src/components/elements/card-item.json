@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_elements_card_items",
+  "info": {
+    "displayName": "CardItem"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": ["images"]
+    },
+    "linkLabel": {
+      "type": "string"
+    },
+    "linkHref": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

@@ -1,0 +1,52 @@
+import type { Metadata } from "next";
+import { draftMode } from "next/headers";
+import { notFound } from "next/navigation";
+import { BlockRenderer } from "@/components/BlockRenderer";
+import { PreviewBanner } from "@/components/PreviewBanner";
+import { getAllPages, getGlobal, getPageBySlug, getStrapiImageUrl } from "@/lib/strapi";
+
+type Props = {
+	params: Promise<{ locale: string; slug: string }>;
+};
+
+export async function generateStaticParams() {
+	// Generate for all locales — locale layout already handles per-locale
+	return [];
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+	const { locale, slug } = await params;
+	const [page, global] = await Promise.all([getPageBySlug(slug, { locale }), getGlobal(locale)]);
+	if (!page) return {};
+
+	const title = page.seo?.metaTitle || page.title;
+	const description = page.seo?.metaDescription || global?.seo?.metaDescription;
+	const ogImage = page.seo?.ogImage || global?.seo?.ogImage;
+
+	return {
+		title,
+		description: description ?? undefined,
+		openGraph: {
+			title,
+			description: description ?? undefined,
+			images: ogImage
+				? [{ url: getStrapiImageUrl(ogImage.url), width: ogImage.width, height: ogImage.height, alt: ogImage.alternativeText ?? title }]
+				: [],
+		},
+	};
+}
+
+export default async function PageBySlug({ params }: Props) {
+	const { locale, slug } = await params;
+	const { isEnabled: isDraft } = await draftMode();
+	const page = await getPageBySlug(slug, { draft: isDraft, locale });
+
+	if (!page) notFound();
+
+	return (
+		<main>
+			{isDraft && <PreviewBanner />}
+			<BlockRenderer blocks={page.blocks ?? []} />
+		</main>
+	);
+}

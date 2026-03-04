@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_elements_cta_links",
+  "info": {
+    "displayName": "CTA Link",
+    "icon": "link",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string",
+      "required": true
+    },
+    "href": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

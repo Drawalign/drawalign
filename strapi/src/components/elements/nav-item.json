@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_elements_nav_items",
+  "info": {
+    "displayName": "Nav Item",
+    "icon": "link"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string",
+      "required": true
+    },
+    "href": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "notFound": {
+    "title": "Page introuvable",
+    "description": "La page que vous cherchez n'existe pas.",
+    "back": "Retour à l'accueil"
+  },
+  "preview": {
+    "banner": "Mode aperçu activé",
+    "exit": "Quitter l'aperçu"
+  }
+}

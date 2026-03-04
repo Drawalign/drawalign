@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_home_convictions_sections",
+  "info": {
+    "displayName": "Convictions Section",
+    "icon": "bulletList",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "eyebrow": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "items": {
+      "type": "component",
+      "component": "home.conviction-item",
+      "repeatable": true
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_home_expertises_sections",
+  "info": {
+    "displayName": "Expertises Section"
+  },
+  "options": {},
+  "attributes": {
+    "items": {
+      "type": "component",
+      "component": "home.expertise-item",
+      "repeatable": true
+    },
+    "cta": {
+      "type": "component",
+      "component": "elements.cta-link",
+      "repeatable": false
+    }
+  }
+}

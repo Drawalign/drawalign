@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_home_hero_bubbles",
+  "info": {
+    "displayName": "Hero Bubble"
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

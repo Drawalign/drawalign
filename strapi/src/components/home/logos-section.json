@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_home_logos_sections",
+  "info": {
+    "displayName": "Logos Section"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "logos": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": ["images"]
+    }
+  },
+  "config": {}
+}

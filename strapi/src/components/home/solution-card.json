@@ -1,0 +1,29 @@
+{
+  "collectionName": "components_home_solution_cards",
+  "info": {
+    "displayName": "Solution Card"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "blocks"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": ["images"]
+    },
+    "cta": {
+      "type": "component",
+      "component": "elements.cta-link",
+      "repeatable": false
+    }
+  }
+}

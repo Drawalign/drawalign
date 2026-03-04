@@ -1,0 +1,31 @@
+{
+  "collectionName": "components_home_heroes",
+  "info": {
+    "displayName": "Home Hero"
+  },
+  "options": {},
+  "attributes": {
+    "eyebrow": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "text": {
+      "type": "blocks"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "bubbles": {
+      "type": "component",
+      "component": "home.hero-bubble",
+      "repeatable": true
+    }
+  }
+}
