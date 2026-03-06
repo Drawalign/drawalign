@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import Image from "next/image";
 import { StrapiImage } from "@/components/ui/StrapiImage";
 import { RichTextRenderer } from "@/components/blocks/TextBlock";
 import type { HomeHero as HomeHeroType } from "@/type";
