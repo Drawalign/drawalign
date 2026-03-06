@@ -26,7 +26,7 @@ export function NavLinks({ items, variant, onNavigate }: Props) {
               href={item.href}
               onClick={onNavigate}
               className={cn(
-                "font-medium  lg:text-lg transition-colors hover:text-muted-foreground",
+                "font-medium md:text-sm lg:text-lg transition-colors hover:text-muted-foreground",
                 isActive ? "text-foreground" : "text-foreground",
               )}
             >

@@ -1,13 +1,12 @@
 import Link from "next/link";
-import type { NavItem, StrapiImage } from "@/type";
+import type { NavItem, StrapiImage as StrapiImageType } from "@/type";
 import { NavLinks } from "./NavLinks";
 import { NavMobileMenu } from "./NavMobileMenu";
-import Image from "next/image";
-import { getStrapiImageUrl } from "@/lib/strapi";
+import { StrapiImage } from "@/components/ui/StrapiImage";
 
 type Props = {
   siteName: string | null;
-  logo: StrapiImage | null;
+  logo: StrapiImageType | null;
   items: NavItem[];
 };
 
@@ -17,18 +16,16 @@ export function NavHeader({ siteName, items, logo }: Props) {
       <div className="mx-auto flex items-center justify-between px-10 py-4">
         <Link href="/" className="font-heading font-semibold text-lg">
           {logo && (
-            <Image
-              src={getStrapiImageUrl(logo.url)}
+            <StrapiImage
+              image={logo}
               alt={logo.alternativeText ?? siteName ?? "Logo"}
-              width={logo.width}
-              height={logo.height}
               className="inline-block mr-2 h-8 w-auto"
             />
           )}
           {!logo && siteName}
         </Link>
 
-        <nav className="hidden items-center gap-6 md:flex">
+        <nav className="hidden items-center gap-4 lg:gap-6 md:flex">
           <NavLinks items={items} variant="header" />
         </nav>
 

@@ -1,0 +1,6 @@
+# Figma assets & maquettes (local only)
+assets/
+maquettes/
+
+# OS
+.DS_Store

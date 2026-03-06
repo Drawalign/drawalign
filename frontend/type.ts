@@ -140,6 +140,15 @@ export type FooterData = {
   logo: StrapiImage | null;
   legalLinks: NavItem[] | null;
   socialLinks: SocialLink[] | null;
+  logo_esf: StrapiImage | null;
+};
+
+export type CtaBannerData = {
+  text: string;
+  cta: {
+    buttonText: string;
+    buttonLink: string;
+  } | null;
 };
 
 export type Global = {
@@ -149,6 +158,7 @@ export type Global = {
   seo: Seo | null;
   navItems: NavItem[] | null;
   footer: FooterData | null;
+  ctaBanner: CtaBannerData | null;
 };
 
 // Home Single Type
@@ -201,19 +211,27 @@ export type ConvictionsSection = {
   items: ConvictionItem[];
 };
 
+export type ListItem = {
+  id: number;
+  text: string;
+};
+
 export type SolutionCard = {
   id: number;
   name: string;
+  logo: StrapiImage | null;
+  background: "primary" | "secondary" | null;
   title: string | null;
-  description: RichTextNode[] | null;
+  description: string | null;
+  features: ListItem[] | null;
   image: StrapiImage | null;
-  cta: CtaLink | null;
 };
 
 export type SolutionsSection = {
   id: number;
   eyebrow: string | null;
   title: string | null;
+  button: CtaLink | null;
   items: SolutionCard[];
 };
 
@@ -222,13 +240,12 @@ export type TestimonialItem = {
   quote: string;
   author: string;
   role: string | null;
-  company: string | null;
-  avatar: StrapiImage | null;
 };
 
 export type TestimonialsSection = {
   id: number;
   title: string | null;
+  eyebrow: string | null;
   items: TestimonialItem[];
 };
 
@@ -236,13 +253,6 @@ export type LogosSection = {
   id: number;
   title: string | null;
   logos: StrapiImage[] | null;
-};
-
-export type CtaFinal = {
-  id: number;
-  image: StrapiImage | null;
-  title: string | null;
-  cta: CtaLink | null;
 };
 
 export type Home = {
@@ -257,7 +267,7 @@ export type Home = {
   solutions: SolutionsSection | null;
   testimonials: TestimonialsSection | null;
   logos: LogosSection | null;
-  ctaFinal: CtaFinal | null;
+  teamPhoto: StrapiImage | null;
 };
 
 // Réponse API Strapi

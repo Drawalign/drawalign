@@ -28,8 +28,12 @@ export async function fetchAPI(
       ? { cache: "no-store", headers }
       : { next: { tags: ["strapi-content"] }, headers },
   );
-  if (!response.ok)
-    throw new Error(`Failed to fetch API: ${response.statusText}`);
+  if (!response.ok) {
+    const body = await response.text().catch(() => "");
+    throw new Error(
+      `[Strapi] ${response.status} ${response.statusText} — ${url}\n${body}`,
+    );
+  }
   return response.json();
 }
 
@@ -87,8 +91,14 @@ export async function getGlobal(locale = "fr"): Promise<Global | null> {
           navItems: true,
           logo: true,
           footer: {
-            populate: { logo: true, legalLinks: true, socialLinks: true },
+            populate: {
+              logo: true,
+              legalLinks: true,
+              socialLinks: true,
+              logo_esf: true,
+            },
           },
+          ctaBanner: { populate: { cta: true } },
         },
       },
       { encodeValuesOnly: true },
@@ -110,14 +120,21 @@ export async function getHome(locale = "fr"): Promise<Home | null> {
         populate: {
           seo: { populate: { ogImage: true } },
           hero: { populate: { image: true, bubbles: true } },
-          expertises: { populate: { items: { populate: { icon: true } }, cta: true } },
+          expertises: {
+            populate: { items: { populate: { icon: true } }, cta: true },
+          },
           fullWidthImage: true,
           quoteSection: { populate: { image: true, cta: true } },
           convictions: { populate: { items: true } },
-          solutions: { populate: { items: { populate: { image: true, cta: true } } } },
-          testimonials: { populate: { items: { populate: { avatar: true } } } },
+          solutions: {
+            populate: {
+              button: true,
+              items: { populate: { image: true, logo: true, features: true } },
+            },
+          },
+          testimonials: { populate: { items: true } },
           logos: { populate: { logos: true } },
-          ctaFinal: { populate: { image: true, cta: true } },
+          teamPhoto: true,
         },
       },
       { encodeValuesOnly: true },

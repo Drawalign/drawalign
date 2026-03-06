@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { getStrapiImageUrl } from "@/lib/strapi";
+import { StrapiImage } from "@/components/ui/StrapiImage";
 import { RichTextRenderer } from "@/components/blocks/TextBlock";
 import type { HomeHero as HomeHeroType } from "@/type";
 
@@ -183,14 +183,11 @@ export function HomeHero({
         {image && (
           <div className="relative md:mx-18 lg:mx-0 aspect-533/409">
             {/* Photo clippée — couche arrière, bouge moins */}
-            <Image
-              src={getStrapiImageUrl(image.url)}
-              alt={image.alternativeText ?? ""}
-              width={image.width}
-              height={image.height}
+            <StrapiImage
+              image={image}
               className="relative w-full h-full object-cover"
               style={{ clipPath: "url(#hero-clip)" }}
-              priority
+              fetchPriority="high"
             />
             {/* Ring — statique, aligné avec la photo */}
             <Image

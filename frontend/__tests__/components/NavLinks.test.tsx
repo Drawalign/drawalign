@@ -16,7 +16,7 @@ vi.mock("next/link", () => ({
 	),
 }));
 
-import { NavLinks } from "@/components/NavLinks";
+import { NavLinks } from "@/components/layout/NavLinks";
 
 const items = [
 	{ id: 1, label: "Page A", href: "/page-a" },

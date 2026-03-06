@@ -3,7 +3,7 @@ import { NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
-import { SiteLayout } from "@/components/SiteLayout";
+import { SiteLayout } from "@/components/layout/SiteLayout";
 import { getGlobal, getStrapiImageUrl } from "@/lib/strapi";
 
 type Props = {

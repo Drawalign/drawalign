@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { draftMode } from "next/headers";
 import { notFound } from "next/navigation";
 import { BlockRenderer } from "@/components/BlockRenderer";
-import { PreviewBanner } from "@/components/PreviewBanner";
+import { PreviewBanner } from "@/components/layout/PreviewBanner";
 import { getAllPages, getGlobal, getPageBySlug, getStrapiImageUrl } from "@/lib/strapi";
 
 type Props = {

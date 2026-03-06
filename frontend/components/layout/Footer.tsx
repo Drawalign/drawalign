@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import {
   FaFacebook,
@@ -8,7 +7,7 @@ import {
   FaXTwitter,
   FaYoutube,
 } from "react-icons/fa6";
-import { getStrapiImageUrl } from "@/lib/strapi";
+import { StrapiImage } from "@/components/ui/StrapiImage";
 import type { FooterData, NavItem } from "@/type";
 
 const SOCIAL_ICONS = {
@@ -41,16 +40,14 @@ export function Footer({ footer, siteName, sitemapItems }: Props) {
     <footer className="border-t bg-foreground text-white">
       <div className="mx-auto px-6 lg:px-10 py-12">
         {hasContent && (
-          <div className="mb-8 grid gap-12 md:grid-cols-[5fr_3fr_3fr]">
+          <div className="grid gap-12 xl:gap-18 md:grid-cols-[5fr_3fr_3fr]">
             {/* Col 1 : Branding + Socials */}
-            <div className="space-y-4">
+            <div className="space-y-12">
               <div className="space-y-3">
                 {footer.logo ? (
-                  <Image
-                    src={getStrapiImageUrl(footer.logo.url)}
+                  <StrapiImage
+                    image={footer.logo}
                     alt={footer.logo.alternativeText || name}
-                    width={footer.logo.width}
-                    height={footer.logo.height}
                     className="h-8 w-auto"
                   />
                 ) : (
@@ -117,6 +114,14 @@ export function Footer({ footer, siteName, sitemapItems }: Props) {
                     {link.label}
                   </Link>
                 ))}
+                <div />
+                {footer.logo_esf && (
+                  <StrapiImage
+                    image={footer.logo_esf}
+                    alt={footer.logo_esf?.alternativeText || name}
+                    className="h-8 w-auto"
+                  />
+                )}
               </nav>
             ) : (
               <div />
