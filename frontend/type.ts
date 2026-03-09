@@ -270,6 +270,31 @@ export type Home = {
   teamPhoto: StrapiImage | null;
 };
 
+// Expertises Page
+export type PageHeroData = {
+  id: number;
+  eyebrow: string | null;
+  title: string;
+  text: string | null;
+};
+
+export type SplitSection = {
+  id: number;
+  title: string | null;
+  description: string | null;
+  features: ListItem[] | null;
+  image: StrapiImage | null;
+  background: "primary" | "secondary" | null;
+};
+
+export type ExpertisePage = {
+  id: number;
+  documentId: string;
+  seo: Seo | null;
+  hero: PageHeroData | null;
+  cards_group: SplitSection[];
+};
+
 // Réponse API Strapi
 export type StrapiSingleResponse<T> = {
   data: T;

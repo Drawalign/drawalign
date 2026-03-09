@@ -380,6 +380,18 @@ export interface SharedFooter extends Struct.ComponentSchema {
   };
 }
 
+export interface SharedPageHero extends Struct.ComponentSchema {
+  collectionName: 'components_shared_page_heroes';
+  info: {
+    displayName: 'Page hero';
+  };
+  attributes: {
+    eyebrow: Schema.Attribute.String;
+    text: Schema.Attribute.Text;
+    title: Schema.Attribute.String;
+  };
+}
+
 export interface SharedSeo extends Struct.ComponentSchema {
   collectionName: 'components_shared_seos';
   info: {
@@ -390,6 +402,21 @@ export interface SharedSeo extends Struct.ComponentSchema {
     metaDescription: Schema.Attribute.Text;
     metaTitle: Schema.Attribute.String;
     ogImage: Schema.Attribute.Media<'images'>;
+  };
+}
+
+export interface SharedSplitSection extends Struct.ComponentSchema {
+  collectionName: 'components_shared_split_sections';
+  info: {
+    displayName: 'split section';
+  };
+  attributes: {
+    background: Schema.Attribute.Enumeration<['primary', 'secondary']> &
+      Schema.Attribute.DefaultTo<'primary'>;
+    description: Schema.Attribute.Text;
+    features: Schema.Attribute.Component<'elements.list-item', true>;
+    image: Schema.Attribute.Media<'images'>;
+    title: Schema.Attribute.String;
   };
 }
 
@@ -426,7 +453,9 @@ declare module '@strapi/strapi' {
       'home.testimonials-section': HomeTestimonialsSection;
       'shared.cta-banner': SharedCtaBanner;
       'shared.footer': SharedFooter;
+      'shared.page-hero': SharedPageHero;
       'shared.seo': SharedSeo;
+      'shared.split-section': SharedSplitSection;
     }
   }
 }

@@ -1,5 +1,6 @@
 import qs from "qs";
 import type {
+  ExpertisePage,
   Global,
   Home,
   Page,
@@ -146,6 +147,31 @@ export async function getHome(locale = "fr"): Promise<Home | null> {
     return response.data;
   } catch (err) {
     console.error("[getHome] error:", err);
+    return null;
+  }
+}
+
+export async function getExpertisePage(
+  locale = "fr",
+): Promise<ExpertisePage | null> {
+  try {
+    const query = qs.stringify(
+      {
+        populate: {
+          seo: { populate: { ogImage: true } },
+          hero: true,
+          cards_group: { populate: { image: true, features: true } },
+        },
+      },
+      { encodeValuesOnly: true },
+    );
+    const response: StrapiSingleResponse<ExpertisePage> = await fetchAPI(
+      `/expertise?${query}`,
+      { locale },
+    );
+    return response.data;
+  } catch (err) {
+    console.error("[getExpertisePage] error:", err);
     return null;
   }
 }

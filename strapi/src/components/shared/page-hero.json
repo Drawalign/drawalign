@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_shared_page_heroes",
+  "info": {
+    "displayName": "Page hero"
+  },
+  "options": {},
+  "attributes": {
+    "eyebrow": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "text": {
+      "type": "text"
+    }
+  },
+  "config": {}
+}

@@ -7,8 +7,12 @@
 @custom-variant 3xl (@media (min-width: 1920px));
 
 @keyframes marquee {
-  from { transform: translateX(0) }
-  to { transform: translateX(-50%) }
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
 }
 
 @layer utilities {
@@ -134,6 +138,6 @@ body {
     @apply font-normal leading-none;
   }
   p {
-    @apply text-sm leading-none md:text-base;
+    @apply text-sm leading-none md:text-lg;
   }
 }

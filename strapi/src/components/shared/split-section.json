@@ -1,0 +1,32 @@
+{
+  "collectionName": "components_shared_split_sections",
+  "info": {
+    "displayName": "split section"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+
+    "background": {
+      "type": "enumeration",
+      "default": "primary",
+      "enum": ["primary", "secondary"]
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": ["images"]
+    },
+    "features": {
+      "type": "component",
+      "component": "elements.list-item",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}
