@@ -141,7 +141,7 @@ export interface ElementsListItem extends Struct.ComponentSchema {
     icon: 'bulletList';
   };
   attributes: {
-    text: Schema.Attribute.String & Schema.Attribute.Required;
+    text: Schema.Attribute.Text & Schema.Attribute.Required;
   };
 }
 
@@ -192,7 +192,6 @@ export interface ExpertisesClientCaseDetail extends Struct.ComponentSchema {
     icon: 'file';
   };
   attributes: {
-    category: Schema.Attribute.String;
     context_items: Schema.Attribute.Component<'elements.list-item', true>;
     context_text: Schema.Attribute.Text;
     problem_consequence: Schema.Attribute.Text;
@@ -425,6 +424,31 @@ export interface MethodeDiagramCard extends Struct.ComponentSchema {
   };
 }
 
+export interface SharedBloc2313 extends Struct.ComponentSchema {
+  collectionName: 'components_shared_bloc_2_3_1_3s';
+  info: {
+    displayName: 'bloc-2/3-1/3';
+  };
+  attributes: {
+    illustration: Schema.Attribute.Media<'images'>;
+    image: Schema.Attribute.Media<'images'>;
+    logo: Schema.Attribute.Media<'images'>;
+    text: Schema.Attribute.String;
+    title: Schema.Attribute.String;
+  };
+}
+
+export interface SharedBulletList extends Struct.ComponentSchema {
+  collectionName: 'components_shared_bullet_lists';
+  info: {
+    displayName: 'BulletList';
+  };
+  attributes: {
+    item: Schema.Attribute.Component<'elements.list-item', true>;
+    title: Schema.Attribute.String;
+  };
+}
+
 export interface SharedCtaBanner extends Struct.ComponentSchema {
   collectionName: 'components_shared_cta_banners';
   info: {
@@ -505,6 +529,96 @@ export interface SharedSplitSection extends Struct.ComponentSchema {
   };
 }
 
+export interface SolutionsHowItWorksSplit extends Struct.ComponentSchema {
+  collectionName: 'components_solutions_how_it_works_splits';
+  info: {
+    displayName: 'How It Works Split';
+  };
+  attributes: {
+    card_items: Schema.Attribute.Component<'elements.list-item', true>;
+    card_title: Schema.Attribute.String;
+    description: Schema.Attribute.Text;
+    title: Schema.Attribute.String;
+  };
+}
+
+export interface SolutionsHowItWorksSteps extends Struct.ComponentSchema {
+  collectionName: 'components_solutions_how_it_works_steps';
+  info: {
+    displayName: 'How It Works Steps';
+  };
+  attributes: {
+    steps: Schema.Attribute.Component<'solutions.step', true>;
+    title: Schema.Attribute.String;
+  };
+}
+
+export interface SolutionsPricingCard extends Struct.ComponentSchema {
+  collectionName: 'components_solutions_pricing_cards';
+  info: {
+    displayName: 'Pricing Card';
+  };
+  attributes: {
+    background: Schema.Attribute.Enumeration<['primary', 'secondary']>;
+    cta: Schema.Attribute.Component<'elements.cta-link', false>;
+    description: Schema.Attribute.Text;
+    features: Schema.Attribute.Component<'elements.list-item', true>;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
+export interface SolutionsResultItem extends Struct.ComponentSchema {
+  collectionName: 'components_solutions_result_items';
+  info: {
+    displayName: 'Result Item';
+  };
+  attributes: {
+    text: Schema.Attribute.Text;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
+export interface SolutionsResultSection extends Struct.ComponentSchema {
+  collectionName: 'components_solutions_result_sections';
+  info: {
+    displayName: 'Result Section';
+  };
+  attributes: {
+    items: Schema.Attribute.Component<'solutions.result-item', true>;
+    title: Schema.Attribute.String;
+  };
+}
+
+export interface SolutionsSolutionIntro extends Struct.ComponentSchema {
+  collectionName: 'components_solutions_solution_intros';
+  info: {
+    displayName: 'Solution Intro';
+  };
+  attributes: {
+    background: Schema.Attribute.Enumeration<['primary', 'secondary']> &
+      Schema.Attribute.DefaultTo<'primary'>;
+    description: Schema.Attribute.Text;
+    illustration: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
+    image: Schema.Attribute.Media<'images'>;
+    logo: Schema.Attribute.Media<'images'>;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
+    title: Schema.Attribute.String;
+  };
+}
+
+export interface SolutionsStep extends Struct.ComponentSchema {
+  collectionName: 'components_solutions_steps';
+  info: {
+    displayName: 'Step';
+  };
+  attributes: {
+    items: Schema.Attribute.Component<'elements.list-item', true>;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
@@ -540,12 +654,21 @@ declare module '@strapi/strapi' {
       'home.testimonial-item': HomeTestimonialItem;
       'home.testimonials-section': HomeTestimonialsSection;
       'methode.diagram-card': MethodeDiagramCard;
+      'shared.bloc-2-3-1-3': SharedBloc2313;
+      'shared.bullet-list': SharedBulletList;
       'shared.cta-banner': SharedCtaBanner;
       'shared.footer': SharedFooter;
       'shared.page-hero': SharedPageHero;
       'shared.section-header': SharedSectionHeader;
       'shared.seo': SharedSeo;
       'shared.split-section': SharedSplitSection;
+      'solutions.how-it-works-split': SolutionsHowItWorksSplit;
+      'solutions.how-it-works-steps': SolutionsHowItWorksSteps;
+      'solutions.pricing-card': SolutionsPricingCard;
+      'solutions.result-item': SolutionsResultItem;
+      'solutions.result-section': SolutionsResultSection;
+      'solutions.solution-intro': SolutionsSolutionIntro;
+      'solutions.step': SolutionsStep;
     }
   }
 }

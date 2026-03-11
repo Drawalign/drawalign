@@ -6,9 +6,6 @@
   },
   "options": {},
   "attributes": {
-    "category": {
-      "type": "string"
-    },
     "title": {
       "type": "string",
       "required": true

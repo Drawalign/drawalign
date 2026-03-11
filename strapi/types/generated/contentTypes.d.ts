@@ -475,45 +475,6 @@ export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiCaseCategoryCaseCategory
-  extends Struct.CollectionTypeSchema {
-  collectionName: 'case_categories';
-  info: {
-    displayName: 'Cat\u00E9gories Cas clients';
-    pluralName: 'case-categories';
-    singularName: 'case-category';
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  pluginOptions: {
-    i18n: {
-      localized: true;
-    };
-  };
-  attributes: {
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    label: Schema.Attribute.String &
-      Schema.Attribute.Required &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    locale: Schema.Attribute.String;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::case-category.case-category'
-    >;
-    publishedAt: Schema.Attribute.DateTime;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
 export interface ApiCaseTagCaseTag extends Struct.CollectionTypeSchema {
   collectionName: 'case_tags';
   info: {
@@ -575,16 +536,6 @@ export interface ApiClientCaseClientCase extends Struct.CollectionTypeSchema {
     background: Schema.Attribute.Enumeration<['primary', 'secondary']> &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<'primary'>;
-    card_title: Schema.Attribute.String &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    category: Schema.Attribute.Relation<
-      'manyToOne',
-      'api::case-category.case-category'
-    >;
     context_items: Schema.Attribute.Component<'elements.list-item', true> &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
@@ -652,6 +603,12 @@ export interface ApiClientCaseClientCase extends Struct.CollectionTypeSchema {
           localized: true;
         };
       }>;
+    short_title: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     solution_cycle_name: Schema.Attribute.String &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
@@ -669,12 +626,6 @@ export interface ApiClientCaseClientCase extends Struct.CollectionTypeSchema {
       }>;
     tags: Schema.Attribute.Relation<'manyToMany', 'api::case-tag.case-tag'>;
     thumbnail_text: Schema.Attribute.String &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    thumbnail_title: Schema.Attribute.String &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -1119,6 +1070,60 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
           localized: true;
         };
       }>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiSolutionSolution extends Struct.SingleTypeSchema {
+  collectionName: 'solutions';
+  info: {
+    displayName: 'Solutions';
+    pluralName: 'solutions';
+    singularName: 'solution';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    atelier_align_how: Schema.Attribute.Component<
+      'solutions.how-it-works-steps',
+      false
+    >;
+    atelier_align_intro: Schema.Attribute.Component<
+      'solutions.solution-intro',
+      false
+    >;
+    atelier_align_result: Schema.Attribute.Component<
+      'solutions.result-section',
+      false
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    draw_scan_how: Schema.Attribute.Component<
+      'solutions.how-it-works-split',
+      false
+    >;
+    draw_scan_intro: Schema.Attribute.Component<
+      'solutions.solution-intro',
+      false
+    >;
+    gallery_images: Schema.Attribute.Media<'images', true>;
+    hero: Schema.Attribute.Component<'shared.page-hero', false>;
+    intro_image: Schema.Attribute.Media<'images'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::solution.solution'
+    > &
+      Schema.Attribute.Private;
+    offers_header: Schema.Attribute.Component<'shared.section-header', false>;
+    pricing_combos: Schema.Attribute.Component<'solutions.pricing-card', true>;
+    pricing_offers: Schema.Attribute.Component<'solutions.pricing-card', true>;
+    publishedAt: Schema.Attribute.DateTime;
+    seo: Schema.Attribute.Component<'shared.seo', false>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1637,7 +1642,6 @@ declare module '@strapi/strapi' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::article.article': ApiArticleArticle;
-      'api::case-category.case-category': ApiCaseCategoryCaseCategory;
       'api::case-tag.case-tag': ApiCaseTagCaseTag;
       'api::client-case.client-case': ApiClientCaseClientCase;
       'api::expertise.expertise': ApiExpertiseExpertise;
@@ -1645,6 +1649,7 @@ declare module '@strapi/strapi' {
       'api::home.home': ApiHomeHome;
       'api::methode-hldb.methode-hldb': ApiMethodeHldbMethodeHldb;
       'api::page.page': ApiPagePage;
+      'api::solution.solution': ApiSolutionSolution;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

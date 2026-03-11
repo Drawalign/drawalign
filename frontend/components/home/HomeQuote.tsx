@@ -1,11 +1,11 @@
 import { Button } from "@/components/ui/button";
+import { SplitCard } from "@/components/ui/SplitCard";
 import { StrapiImage } from "@/components/ui/StrapiImage";
 import type { QuoteSection } from "@/type";
 
 export function HomeQuote({ image, title, text, cta }: QuoteSection) {
 	return (
-		<section className="bg-accent-peach px-5 pb-5">
-			<div className="grid overflow-hidden rounded-2xl bg-accent-peach md:grid-cols-2">
+		<SplitCard className="px-5 pb-5">
 				{/* Gauche : titre + texte + CTA */}
 				<div className="flex flex-col justify-between gap-8 bg-primary 3xl:px-18 px-10 py-16 md:py-24">
 					<div className="flex flex-col gap-6">
@@ -26,7 +26,6 @@ export function HomeQuote({ image, title, text, cta }: QuoteSection) {
 						<StrapiImage image={image} fill className="" />
 					</div>
 				)}
-			</div>
-		</section>
+		</SplitCard>
 	);
 }

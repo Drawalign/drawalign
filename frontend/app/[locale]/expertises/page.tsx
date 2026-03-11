@@ -6,7 +6,8 @@ import { FullWidthImage } from "@/components/ui/FullWidthImage";
 import { Section } from "@/components/ui/Section";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { ThreeColCards } from "@/components/ui/ThreeColCards";
-import { getExpertisePage, getGlobal, getStrapiImageUrl } from "@/lib/strapi";
+import { buildPageMetadata } from "@/lib/metadata";
+import { getExpertisePage, getGlobal } from "@/lib/strapi";
 
 type Props = {
 	params: Promise<{ locale: string }>;
@@ -16,28 +17,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 	const { locale } = await params;
 	const [page, global] = await Promise.all([getExpertisePage(locale), getGlobal(locale)]);
 
-	const title = page?.seo?.metaTitle || undefined;
-	const description = page?.seo?.metaDescription || global?.seo?.metaDescription;
-	const ogImage = page?.seo?.ogImage || global?.seo?.ogImage;
-
-	return {
-		title: title ?? undefined,
-		description: description ?? undefined,
-		openGraph: {
-			title: title ?? undefined,
-			description: description ?? undefined,
-			images: ogImage
-				? [
-						{
-							url: getStrapiImageUrl(ogImage.url),
-							width: ogImage.width,
-							height: ogImage.height,
-							alt: ogImage.alternativeText ?? title ?? "",
-						},
-					]
-				: [],
-		},
-	};
+	return buildPageMetadata(page?.seo, global?.seo);
 }
 
 export default async function ExpertisesPage({ params }: Props) {

@@ -17,31 +17,37 @@
   "attributes": {
     "title": {
       "type": "string",
-      "pluginOptions": { "i18n": { "localized": true } },
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
       "required": true
     },
-    "card_title": {
+    "short_title": {
       "type": "string",
-      "pluginOptions": { "i18n": { "localized": true } }
-    },
-    "thumbnail_title": {
-      "type": "string",
-      "pluginOptions": { "i18n": { "localized": true } }
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "thumbnail_text": {
       "type": "string",
-      "pluginOptions": { "i18n": { "localized": true } }
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "background": {
       "type": "enumeration",
-      "enum": ["primary", "secondary"],
       "required": true,
-      "default": "primary"
-    },
-    "category": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::case-category.case-category"
+      "default": "primary",
+      "enum": [
+        "primary",
+        "secondary"
+      ]
     },
     "features": {
       "type": "component",

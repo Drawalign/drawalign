@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_solutions_result_sections",
+  "info": {
+    "displayName": "Result Section"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "items": {
+      "type": "component",
+      "component": "solutions.result-item",
+      "repeatable": true
+    }
+  }
+}

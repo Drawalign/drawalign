@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_solutions_result_items",
+  "info": {
+    "displayName": "Result Item"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "text": {
+      "type": "text"
+    }
+  }
+}

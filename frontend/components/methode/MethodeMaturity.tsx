@@ -1,3 +1,4 @@
+import { SplitCard } from "@/components/ui/SplitCard";
 import { StrapiImage } from "@/components/ui/StrapiImage";
 import type { CtaLink, StrapiImage as StrapiImageType } from "@/type";
 
@@ -18,8 +19,7 @@ export function MethodeMaturity({
 	maturity_image,
 }: Props) {
 	return (
-		<section className="bg-accent-peach p-5">
-			<div className="grid overflow-hidden rounded-2xl bg-accent-peach md:grid-cols-2">
+		<SplitCard className="p-5">
 				{/* Gauche : image */}
 				{maturity_image && (
 					<div className="relative min-h-72 bg-secondary md:min-h-0">
@@ -41,7 +41,6 @@ export function MethodeMaturity({
 						)}
 					</div>
 				</div>
-			</div>
-		</section>
+		</SplitCard>
 	);
 }

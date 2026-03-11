@@ -1,0 +1,79 @@
+{
+  "kind": "singleType",
+  "collectionName": "solutions",
+  "info": {
+    "singularName": "solution",
+    "pluralName": "solutions",
+    "displayName": "Solutions"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "hero": {
+      "type": "component",
+      "component": "shared.page-hero",
+      "repeatable": false
+    },
+    "intro_image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "draw_scan_intro": {
+      "type": "component",
+      "component": "solutions.solution-intro",
+      "repeatable": false
+    },
+    "draw_scan_how": {
+      "type": "component",
+      "component": "solutions.how-it-works-split",
+      "repeatable": false
+    },
+    "atelier_align_intro": {
+      "type": "component",
+      "component": "solutions.solution-intro",
+      "repeatable": false
+    },
+    "atelier_align_how": {
+      "type": "component",
+      "component": "solutions.how-it-works-steps",
+      "repeatable": false
+    },
+    "atelier_align_result": {
+      "type": "component",
+      "component": "solutions.result-section",
+      "repeatable": false
+    },
+    "gallery_images": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "offers_header": {
+      "type": "component",
+      "component": "shared.section-header",
+      "repeatable": false
+    },
+    "pricing_offers": {
+      "type": "component",
+      "component": "solutions.pricing-card",
+      "repeatable": true
+    },
+    "pricing_combos": {
+      "type": "component",
+      "component": "solutions.pricing-card",
+      "repeatable": true
+    },
+    "seo": {
+      "type": "component",
+      "component": "shared.seo",
+      "repeatable": false
+    }
+  }
+}

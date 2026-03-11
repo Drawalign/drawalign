@@ -3,7 +3,8 @@ import { draftMode } from "next/headers";
 import { notFound } from "next/navigation";
 import { BlockRenderer } from "@/components/BlockRenderer";
 import { PreviewBanner } from "@/components/layout/PreviewBanner";
-import { getGlobal, getPageBySlug, getStrapiImageUrl } from "@/lib/strapi";
+import { buildPageMetadata } from "@/lib/metadata";
+import { getGlobal, getPageBySlug } from "@/lib/strapi";
 
 type Props = {
   params: Promise<{ locale: string; slug: string }>;
@@ -22,28 +23,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   ]);
   if (!page) return {};
 
-  const title = page.seo?.metaTitle || page.title;
-  const description = page.seo?.metaDescription || global?.seo?.metaDescription;
-  const ogImage = page.seo?.ogImage || global?.seo?.ogImage;
-
-  return {
-    title,
-    description: description ?? undefined,
-    openGraph: {
-      title,
-      description: description ?? undefined,
-      images: ogImage
-        ? [
-            {
-              url: getStrapiImageUrl(ogImage.url),
-              width: ogImage.width,
-              height: ogImage.height,
-              alt: ogImage.alternativeText ?? title,
-            },
-          ]
-        : [],
-    },
-  };
+  const pageSeo = page.seo ?? { metaTitle: page.title, metaDescription: null, ogImage: null };
+  return buildPageMetadata(pageSeo, global?.seo);
 }
 
 export default async function PageBySlug({ params }: Props) {

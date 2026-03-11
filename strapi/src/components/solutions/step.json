@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_solutions_steps",
+  "info": {
+    "displayName": "Step"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "items": {
+      "type": "component",
+      "component": "elements.list-item",
+      "repeatable": true
+    }
+  }
+}

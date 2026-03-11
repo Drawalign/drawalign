@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_solutions_how_it_works_splits",
+  "info": {
+    "displayName": "How It Works Split"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "card_title": {
+      "type": "string"
+    },
+    "card_items": {
+      "type": "component",
+      "component": "elements.list-item",
+      "repeatable": true
+    }
+  }
+}

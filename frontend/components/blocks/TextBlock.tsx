@@ -1,17 +1,6 @@
+import { isExternalUrl, sanitizeUrl } from "@/lib/url";
 import { cn } from "@/lib/utils";
 import type { RichTextNode, TextBlock as TextBlockType } from "@/type";
-
-function sanitizeUrl(url: string | undefined): string {
-	if (!url) return "#";
-	try {
-		const parsed = new URL(url);
-		if (parsed.protocol === "javascript:") return "#";
-		return url;
-	} catch {
-		if (url.startsWith("/") || url.startsWith("#")) return url;
-		return "#";
-	}
-}
 
 export function RichTextRenderer({ nodes }: { nodes: RichTextNode[] }) {
 	return (
@@ -61,7 +50,7 @@ export function RichTextRenderer({ nodes }: { nodes: RichTextNode[] }) {
 						return <li key={i}>{children}</li>;
 					case "link": {
 						const href = sanitizeUrl(node.url);
-						const isExternal = href.startsWith("http");
+						const isExternal = isExternalUrl(href);
 						return (
 							<a
 								key={i}

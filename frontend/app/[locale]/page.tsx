@@ -10,7 +10,8 @@ import { PreviewBanner } from "@/components/layout/PreviewBanner";
 import { FullWidthImage } from "@/components/ui/FullWidthImage";
 import { StrapiImage } from "@/components/ui/StrapiImage";
 import { ThreeColCards } from "@/components/ui/ThreeColCards";
-import { getGlobal, getHome, getStrapiImageUrl } from "@/lib/strapi";
+import { buildPageMetadata } from "@/lib/metadata";
+import { getGlobal, getHome } from "@/lib/strapi";
 
 type Props = {
 	params: Promise<{ locale: string }>;
@@ -20,28 +21,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 	const { locale } = await params;
 	const [home, global] = await Promise.all([getHome(locale), getGlobal(locale)]);
 
-	const title = home?.seo?.metaTitle || undefined;
-	const description = home?.seo?.metaDescription || global?.seo?.metaDescription;
-	const ogImage = home?.seo?.ogImage || global?.seo?.ogImage;
-
-	return {
-		title: title ?? undefined,
-		description: description ?? undefined,
-		openGraph: {
-			title: title ?? undefined,
-			description: description ?? undefined,
-			images: ogImage
-				? [
-						{
-							url: getStrapiImageUrl(ogImage.url),
-							width: ogImage.width,
-							height: ogImage.height,
-							alt: ogImage.alternativeText ?? title ?? "",
-						},
-					]
-				: [],
-		},
-	};
+	return buildPageMetadata(home?.seo, global?.seo);
 }
 
 export default async function HomePage({ params }: Props) {

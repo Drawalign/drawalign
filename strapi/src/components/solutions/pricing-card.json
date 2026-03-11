@@ -1,0 +1,33 @@
+{
+  "collectionName": "components_solutions_pricing_cards",
+  "info": {
+    "displayName": "Pricing Card"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text"
+    },
+    "features": {
+      "type": "component",
+      "component": "elements.list-item",
+      "repeatable": true
+    },
+    "cta": {
+      "type": "component",
+      "component": "elements.cta-link",
+      "repeatable": false
+    },
+    "background": {
+      "type": "enumeration",
+      "enum": [
+        "primary",
+        "secondary"
+      ]
+    }
+  }
+}

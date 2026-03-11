@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
-import { MethodeDiagram } from "@/components/methode/MethodeDiagram";
-import { MethodeHero } from "@/components/methode/MethodeHero";
+import { PageHero } from "@/components/layout/PageHero";
 import { MethodeMaturity } from "@/components/methode/MethodeMaturity";
 import { MethodePrincipes } from "@/components/methode/MethodePrincipes";
 import { FullWidthImage } from "@/components/ui/FullWidthImage";
-import { getGlobal, getMethodeHldbPage, getStrapiImageUrl } from "@/lib/strapi";
+import { Section } from "@/components/ui/Section";
+import { StrapiImage } from "@/components/ui/StrapiImage";
+import { buildPageMetadata } from "@/lib/metadata";
+import { getGlobal, getMethodeHldbPage } from "@/lib/strapi";
 
 type Props = {
 	params: Promise<{ locale: string }>;
@@ -14,28 +16,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 	const { locale } = await params;
 	const [page, global] = await Promise.all([getMethodeHldbPage(locale), getGlobal(locale)]);
 
-	const title = page?.seo?.metaTitle || undefined;
-	const description = page?.seo?.metaDescription || global?.seo?.metaDescription;
-	const ogImage = page?.seo?.ogImage || global?.seo?.ogImage;
-
-	return {
-		title: title ?? undefined,
-		description: description ?? undefined,
-		openGraph: {
-			title: title ?? undefined,
-			description: description ?? undefined,
-			images: ogImage
-				? [
-						{
-							url: getStrapiImageUrl(ogImage.url),
-							width: ogImage.width,
-							height: ogImage.height,
-							alt: ogImage.alternativeText ?? title ?? "",
-						},
-					]
-				: [],
-		},
-	};
+	return buildPageMetadata(page?.seo, global?.seo);
 }
 
 export default async function MethodeHldbPage({ params }: Props) {
@@ -52,16 +33,19 @@ export default async function MethodeHldbPage({ params }: Props) {
 
 	return (
 		<main>
-			{page.hero && <MethodeHero hero={page.hero} diagram={page.hero_diagram} />}
-			{(page.diagram_left || page.diagram_right || page.diagram_center_title) && (
-				<MethodeDiagram
-					center_title={page.diagram_center_title}
-					center_text={page.diagram_center_text}
-					left={page.diagram_left}
-					right={page.diagram_right}
-				/>
+			{page.hero && (
+				<PageHero eyebrow={page.hero.eyebrow} title={page.hero.title} subtitle={page.hero.text} />
+			)}
+			{page.hero_diagram && (
+				<Section className="flex justify-center">
+					<StrapiImage image={page.hero_diagram} className="w-full max-w-sm md:max-w-md" />
+				</Section>
 			)}
 			<MethodePrincipes
+				center_title={page.diagram_center_title}
+				center_text={page.diagram_center_text}
+				left={page.diagram_left}
+				right={page.diagram_right}
 				principles_title={page.principles_title}
 				principles_items={page.principles_items}
 				theoretical_title={page.theoretical_title}

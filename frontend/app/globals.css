@@ -20,6 +20,19 @@
   .animate-marquee {
     animation: marquee 30s linear infinite;
   }
+  .btn-foreground {
+    background: linear-gradient(
+      to right,
+      oklch(0.7197 0.181 43.21) 0 33%,
+      oklch(0.2211 0.1062 278.37) 67% 100%
+    );
+    background-size: 300% 100%;
+    background-position: 100% center;
+    transition: background-position 0.5s ease;
+  }
+  .btn-foreground:hover {
+    background-position: 0% center;
+  }
 }
 
 @theme inline {
@@ -135,14 +148,16 @@ body {
     @apply bg-background text-foreground;
   }
   h1,
-  h2,
+  h2 {
+    @apply font-normal leading-none tracking-tight;
+  }
   h3,
   h4,
   h5,
   h6 {
-    @apply font-normal leading-none;
+    @apply font-normal leading-none tracking-normal;
   }
   p {
-    @apply text-sm leading-none md:text-lg;
+    @apply text-sm leading-normal md:text-lg;
   }
 }
