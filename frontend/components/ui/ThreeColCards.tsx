@@ -1,22 +1,27 @@
 import { Button } from "@/components/ui/button";
 import { Section } from "@/components/ui/Section";
 import { StrapiImage } from "@/components/ui/StrapiImage";
+import { cn } from "@/lib/utils";
 import type { ExpertisesSection } from "@/type";
 
-export function ThreeColCards({ items, cta }: ExpertisesSection) {
+type Props = ExpertisesSection & { className?: string };
+
+export function ThreeColCards({ items, cta, className }: Props) {
 	return (
-		<Section className="bg-white">
+		<Section variant="md" className={cn("bg-white", className)}>
 			<div className="grid gap-10 md:grid-cols-3">
 				{items.map((item) => (
-					<div key={item.id} className="flex flex-col gap-8 border-l px-8">
+					<div key={item.id} className="flex flex-col gap-4 border-l pl-5 lg:gap-8 lg:px-8">
 						{item.icon && (
 							<StrapiImage image={item.icon} className="h-10 w-auto self-start object-contain" />
 						)}
 						<div>
-							<h3 className="text-3xl">{item.title}</h3>
+							<h3 className="text-2xl lg:text-3xl">{item.title}</h3>
 						</div>
-						{item.subtitle && <p className="text-foreground text-lg">{item.subtitle}</p>}
-						{item.text && <p className="text-lg text-muted-foreground">{item.text}</p>}
+						{item.subtitle && (
+							<p className="text-base text-foreground lg:text-lg">{item.subtitle}</p>
+						)}
+						{item.text && <p className="text-base text-muted-foreground lg:text-lg">{item.text}</p>}
 					</div>
 				))}
 			</div>

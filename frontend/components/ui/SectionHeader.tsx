@@ -8,9 +8,11 @@ type Props = {
 
 export function SectionHeader({ eyebrow, title, className }: Props) {
 	return (
-		<div className={cn("px-37 pt-8 text-center", className)}>
+		<div className={cn("px-5 pt-8 text-center lg:px-37", className)}>
 			{eyebrow && <p className="mb-7 font-medium text-base text-foreground">{eyebrow}</p>}
-			<h2 className="mx-auto max-w-2xl text-4xl tracking-[-7%] md:text-6xl">{title}</h2>
+			<h2 className="mx-auto max-w-2xl text-4xl tracking-[-7%] md:text-6xl lg:max-w-4xl">
+				{title}
+			</h2>
 		</div>
 	);
 }

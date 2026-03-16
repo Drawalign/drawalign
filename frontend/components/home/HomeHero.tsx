@@ -144,7 +144,7 @@ export function HomeHero({ eyebrow, title, text, image, bubbles }: HomeHeroType)
 								{eyebrow}
 							</p>
 						)}
-						<h1 className="text-4xl tracking-tight lg:text-3xl xl:text-[40px]">{title}</h1>
+						<h1 className="text-4xl tracking-tight lg:text-3xl xl:text-40">{title}</h1>
 						{text && text.length > 0 && (
 							<div className="mt-6 text-base xl:text-lg [&_p]:mb-0 [&_p]:leading-5">
 								<RichTextRenderer nodes={text} />

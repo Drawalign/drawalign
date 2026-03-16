@@ -1147,6 +1147,35 @@ export interface ApiPartenairePartenaire extends Struct.SingleTypeSchema {
   };
 }
 
+export interface ApiRessourceRessource extends Struct.SingleTypeSchema {
+  collectionName: 'ressources';
+  info: {
+    displayName: 'Ressources';
+    pluralName: 'ressources';
+    singularName: 'ressource';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    hero: Schema.Attribute.Component<'shared.page-hero', false>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::ressource.ressource'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    seo: Schema.Attribute.Component<'shared.seo', false>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiSolutionSolution extends Struct.SingleTypeSchema {
   collectionName: 'solutions';
   info: {
@@ -1754,6 +1783,7 @@ declare module '@strapi/strapi' {
       'api::methode-hldb.methode-hldb': ApiMethodeHldbMethodeHldb;
       'api::page.page': ApiPagePage;
       'api::partenaire.partenaire': ApiPartenairePartenaire;
+      'api::ressource.ressource': ApiRessourceRessource;
       'api::solution.solution': ApiSolutionSolution;
       'api::team-member.team-member': ApiTeamMemberTeamMember;
       'plugin::content-releases.release': PluginContentReleasesRelease;

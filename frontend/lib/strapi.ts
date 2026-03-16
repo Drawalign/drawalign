@@ -1,5 +1,7 @@
 import qs from "qs";
 import type {
+	Article,
+	ArticleCard,
 	ContactPage,
 	ExpertisePage,
 	Global,
@@ -7,6 +9,7 @@ import type {
 	MethodeHldbPage,
 	Page,
 	PartenairesPage,
+	RessourcesPage,
 	SolutionsPage,
 	StrapiResponse,
 	StrapiSingleResponse,
@@ -221,7 +224,7 @@ export async function getSolutionsPage(locale = "fr"): Promise<SolutionsPage | n
 					draw_scan_intro: {
 						populate: { logo: true, image: true, illustration: true },
 					},
-					draw_scan_how: { populate: { card_items: true } },
+					draw_scan_how: { populate: { card_items: true, features: true } },
 					atelier_align_intro: {
 						populate: { logo: true, image: true, illustration: true },
 					},
@@ -275,6 +278,27 @@ export async function getPartenairesPage(locale = "fr"): Promise<PartenairesPage
 	}
 }
 
+export async function getRessourcesPage(locale = "fr"): Promise<RessourcesPage | null> {
+	try {
+		const query = qs.stringify(
+			{
+				populate: {
+					seo: { populate: { ogImage: true } },
+					hero: true,
+				},
+			},
+			{ encodeValuesOnly: true },
+		);
+		const response: StrapiSingleResponse<RessourcesPage> = await fetchAPI(`/ressource?${query}`, {
+			locale,
+		});
+		return response.data;
+	} catch (err) {
+		console.error("[getRessourcesPage] error:", err);
+		return null;
+	}
+}
+
 export async function getContactPage(locale = "fr"): Promise<ContactPage | null> {
 	try {
 		const query = qs.stringify(
@@ -295,6 +319,43 @@ export async function getContactPage(locale = "fr"): Promise<ContactPage | null>
 		console.error("[getContactPage] error:", err);
 		return null;
 	}
+}
+
+export async function getArticles(locale = "fr"): Promise<ArticleCard[]> {
+	const query = qs.stringify(
+		{ fields: ["title", "slug"], populate: { coverImage: true } },
+		{ encodeValuesOnly: true },
+	);
+	const response: StrapiResponse<ArticleCard> = await fetchAPI(`/articles?${query}`, { locale });
+	return response.data;
+}
+
+export async function getArticleBySlug(
+	slug: string,
+	{ draft = false, locale = "fr" }: { draft?: boolean; locale?: string } = {},
+): Promise<Article | null> {
+	const query = qs.stringify(
+		{
+			filters: { slug: { $eq: slug } },
+			populate: {
+				coverImage: true,
+				content: {
+					on: {
+						"blocks.hero": { populate: { backgroundImage: true } },
+						"blocks.gallery": { populate: { images: true } },
+						"blocks.image-block": { populate: { image: true } },
+						"blocks.accordion": { populate: { items: true } },
+						"blocks.text-block": { populate: "*" },
+						"blocks.cta": { populate: "*" },
+						"blocks.video-embed": { populate: "*" },
+					},
+				},
+			},
+		},
+		{ encodeValuesOnly: true },
+	);
+	const response: StrapiResponse<Article> = await fetchAPI(`/articles?${query}`, { draft, locale });
+	return response.data[0] || null;
 }
 
 export function getStrapiImageUrl(url: string): string {

@@ -37,6 +37,8 @@
 
 @theme inline {
   --container-9xl: 1920px;
+  --text-32: 2rem;
+  --text-40: 2.5rem;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-work-sans);

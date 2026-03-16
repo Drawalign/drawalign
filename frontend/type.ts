@@ -1,3 +1,8 @@
+// Next.js page props
+export type LocalePageProps = {
+	params: Promise<{ locale: string }>;
+};
+
 // Type Strapi media
 export type StrapiImage = {
 	url: string;
@@ -98,6 +103,19 @@ export type CardsBlock = {
 
 // Union type pour tous les blocks
 export type Block = HeroBlock | TextBlock | CTABlock | ImageBlock | AccordionBlock | CardsBlock;
+
+// Article
+export type ArticleCard = {
+	id: number;
+	documentId: string;
+	title: string;
+	slug: string;
+	coverImage: StrapiImage | null;
+};
+
+export type Article = ArticleCard & {
+	content: Block[];
+};
 
 // Type de la Page
 export type Page = {
@@ -337,6 +355,7 @@ export type ClientCase = {
 	problem_consequence: string | null;
 	solution_cycle_name: string | null;
 	solution_steps: SolutionStep[] | null;
+	roi: string | null;
 	results_metrics: MetricItem[] | null;
 	results_benefit: string | null;
 	results_feedback: string | null;
@@ -403,9 +422,10 @@ export type SolutionIntro = {
 export type HowItWorksSplit = {
 	id: number;
 	title: string | null;
-	description: string | null;
+	description: RichTextNode[] | null;
 	card_title: string | null;
 	card_items: ListItem[] | null;
+	features: ListItem[] | null;
 };
 
 export type StepItem = {
@@ -441,6 +461,7 @@ export type SolutionsPricingCard = {
 	cta: CtaLink | null;
 	logo: StrapiImage | null;
 	logo_right: boolean | null;
+	subtitle: string | null;
 	background: Background | null;
 };
 
@@ -495,6 +516,13 @@ export type PartenairesPage = {
 	quote_text: string | null;
 	quote_author: string | null;
 	quote_function: string | null;
+};
+
+export type RessourcesPage = {
+	id: number;
+	documentId: string;
+	seo: Seo | null;
+	hero: PageHeroData | null;
 };
 
 // Réponse API Strapi

@@ -2,36 +2,40 @@ import type { Metadata } from "next";
 import { draftMode } from "next/headers";
 import { notFound } from "next/navigation";
 import { BlockRenderer } from "@/components/BlockRenderer";
+import { PageHero } from "@/components/layout/PageHero";
 import { PreviewBanner } from "@/components/layout/PreviewBanner";
 import { buildPageMetadata } from "@/lib/metadata";
-import { getGlobal, getPageBySlug } from "@/lib/strapi";
+import { getArticleBySlug, getGlobal } from "@/lib/strapi";
 import type { LocalePageProps } from "@/type";
 
 export async function generateStaticParams() {
-	// Generate for all locales — locale layout already handles per-locale
 	return [];
 }
 
 export async function generateMetadata({ params }: LocalePageProps): Promise<Metadata> {
 	const { locale, slug } = await params;
-	const [page, global] = await Promise.all([getPageBySlug(slug, { locale }), getGlobal(locale)]);
-	if (!page) return {};
+	const [article, global] = await Promise.all([
+		getArticleBySlug(slug, { locale }),
+		getGlobal(locale),
+	]);
+	if (!article) return {};
 
-	const pageSeo = page.seo ?? { metaTitle: page.title, metaDescription: null, ogImage: null };
+	const pageSeo = { metaTitle: article.title, metaDescription: null, ogImage: article.coverImage };
 	return buildPageMetadata(pageSeo, global?.seo);
 }
 
-export default async function PageBySlug({ params }: LocalePageProps) {
+export default async function ArticlePage({ params }: LocalePageProps) {
 	const { locale, slug } = await params;
 	const { isEnabled: isDraft } = await draftMode();
-	const page = await getPageBySlug(slug, { draft: isDraft, locale });
+	const article = await getArticleBySlug(slug, { draft: isDraft, locale });
 
-	if (!page) notFound();
+	if (!article) notFound();
 
 	return (
 		<main>
 			{isDraft && <PreviewBanner />}
-			<BlockRenderer blocks={page.blocks ?? []} />
+			<PageHero title={article.title} />
+			<BlockRenderer blocks={article.content ?? []} />
 		</main>
 	);
 }

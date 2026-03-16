@@ -28,7 +28,14 @@ const sizes = {
 	md: "px-8 py-3 text-sm 2xl:text-xl",
 };
 
-export function Button({ children, className, variant = "primary", size = "md", arrow, ...props }: Props) {
+export function Button({
+	children,
+	className,
+	variant = "primary",
+	size = "md",
+	arrow,
+	...props
+}: Props) {
 	const base = cn(
 		"inline-flex cursor-pointer items-center justify-center rounded-full font-medium",
 		variants[variant],
@@ -37,7 +44,10 @@ export function Button({ children, className, variant = "primary", size = "md", 
 	);
 
 	const inner = arrow ? (
-		<span className="relative z-10 flex items-center gap-2">{children}<ArrowIcon /></span>
+		<span className="relative z-10 flex items-center gap-2">
+			{children}
+			<ArrowIcon />
+		</span>
 	) : (
 		<span className="relative z-10">{children}</span>
 	);

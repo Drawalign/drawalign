@@ -7,19 +7,16 @@ import { Section } from "@/components/ui/Section";
 import { StrapiImage } from "@/components/ui/StrapiImage";
 import { buildPageMetadata } from "@/lib/metadata";
 import { getGlobal, getMethodeHldbPage } from "@/lib/strapi";
+import type { LocalePageProps } from "@/type";
 
-type Props = {
-	params: Promise<{ locale: string }>;
-};
-
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export async function generateMetadata({ params }: LocalePageProps): Promise<Metadata> {
 	const { locale } = await params;
 	const [page, global] = await Promise.all([getMethodeHldbPage(locale), getGlobal(locale)]);
 
 	return buildPageMetadata(page?.seo, global?.seo);
 }
 
-export default async function MethodeHldbPage({ params }: Props) {
+export default async function MethodeHldbPage({ params }: LocalePageProps) {
 	const { locale } = await params;
 	const page = await getMethodeHldbPage(locale);
 

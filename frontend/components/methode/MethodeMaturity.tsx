@@ -20,27 +20,25 @@ export function MethodeMaturity({
 }: Props) {
 	return (
 		<SplitCard className="p-5">
-				{/* Gauche : image */}
-				{maturity_image && (
-					<div className="relative min-h-72 bg-secondary md:min-h-0">
-						<StrapiImage image={maturity_image} fill className="" />
-					</div>
-				)}
-				{/* Droite : titre + texte + CTA */}
-				<div className="flex flex-col justify-between gap-8 bg-primary p-14">
-					<div className="flex flex-col gap-6">
-						<h2 className="3xl:text-[40px] text-2xl text-white md:text-3xl">{maturity_title}</h2>
-						{maturity_text && <p className="text-base text-white lg:text-lg">{maturity_text}</p>}
-					</div>
-					<div className="border-l px-5">
-						{maturity_title && (
-							<h3 className="font-medium text-2xl text-white leading-normal">{highlight_title}</h3>
-						)}
-						{highlight_text && (
-							<p className="text-2xl text-white leading-tight">{highlight_text}</p>
-						)}
-					</div>
+			{/* Gauche : image */}
+			{maturity_image && (
+				<div className="relative min-h-72 bg-secondary md:min-h-0">
+					<StrapiImage image={maturity_image} fill className="" />
 				</div>
+			)}
+			{/* Droite : titre + texte + CTA */}
+			<div className="flex flex-col justify-between gap-8 bg-primary p-14">
+				<div className="flex flex-col gap-6">
+					<h2 className="3xl:text-40 text-2xl text-white md:text-3xl">{maturity_title}</h2>
+					{maturity_text && <p className="text-base text-white lg:text-lg">{maturity_text}</p>}
+				</div>
+				<div className="border-l px-5">
+					{maturity_title && (
+						<h3 className="font-medium text-2xl text-white leading-normal">{highlight_title}</h3>
+					)}
+					{highlight_text && <p className="text-2xl text-white leading-tight">{highlight_text}</p>}
+				</div>
+			</div>
 		</SplitCard>
 	);
 }

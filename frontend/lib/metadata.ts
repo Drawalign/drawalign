@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import type { Seo } from "@/type";
 import { getStrapiImageUrl } from "@/lib/strapi";
+import type { Seo } from "@/type";
 
 export function buildPageMetadata(pageSeo?: Seo | null, globalSeo?: Seo | null): Metadata {
 	const title = pageSeo?.metaTitle || undefined;

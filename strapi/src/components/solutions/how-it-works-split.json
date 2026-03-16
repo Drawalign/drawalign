@@ -8,13 +8,18 @@
     "title": {
       "type": "string"
     },
-    "description": {
-      "type": "text"
-    },
     "card_title": {
       "type": "string"
     },
+    "description": {
+      "type": "blocks"
+    },
     "card_items": {
+      "type": "component",
+      "component": "elements.list-item",
+      "repeatable": true
+    },
+    "features": {
       "type": "component",
       "component": "elements.list-item",
       "repeatable": true

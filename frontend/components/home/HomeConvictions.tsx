@@ -5,8 +5,8 @@ import type { ConvictionsSection } from "@/type";
 
 export function HomeConvictions({ eyebrow, title, items }: ConvictionsSection) {
 	return (
-		<Section variant="narrow">
-			<SectionHeader eyebrow={eyebrow} title={title} className="mb-12" />
+		<Section className="md:px-18 lg:px-38">
+			<SectionHeader eyebrow={eyebrow} title={title} className="py-10 lg:py-20" />
 
 			<div className="flex flex-col gap-5">
 				{items.map((item) => (
@@ -18,7 +18,7 @@ export function HomeConvictions({ eyebrow, title, items }: ConvictionsSection) {
 							{item.title}
 						</h3>
 						{item.text && (
-							<p className="text-center text-foreground text-sm lg:text-base 2xl:text-xl">
+							<p className="text-center text-foreground text-sm leading-tight lg:text-base lg:leading-normal 2xl:text-xl">
 								{item.text}
 							</p>
 						)}

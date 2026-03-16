@@ -1,0 +1,25 @@
+{
+  "kind": "singleType",
+  "collectionName": "ressources",
+  "info": {
+    "singularName": "ressource",
+    "pluralName": "ressources",
+    "displayName": "Ressources"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "hero": {
+      "type": "component",
+      "component": "shared.page-hero",
+      "repeatable": false
+    },
+    "seo": {
+      "type": "component",
+      "component": "shared.seo",
+      "repeatable": false
+    }
+  }
+}

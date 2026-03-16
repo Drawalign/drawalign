@@ -26,7 +26,7 @@ export function RichTextRenderer({ nodes }: { nodes: RichTextNode[] }) {
 				switch (node.type) {
 					case "paragraph":
 						return (
-							<p key={i} className="mb-4 leading-7">
+							<p key={i} className="mb-4 leading-tight lg:leading-normal">
 								{children}
 							</p>
 						);

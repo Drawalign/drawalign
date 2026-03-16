@@ -26,7 +26,7 @@ export function HomeLogos({ title, logos }: LogosSection) {
 	));
 
 	return (
-		<Section>
+		<Section className="pb-10 lg:pb-20">
 			{title && <p className="mb-8 text-center text-foreground text-lg">{title}</p>}
 
 			{/* Mesure : outer = largeur du container, inner = largeur naturelle des logos */}

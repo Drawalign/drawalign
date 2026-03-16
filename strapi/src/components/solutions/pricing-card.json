@@ -43,6 +43,9 @@
     "logo_right": {
       "type": "boolean",
       "default": false
+    },
+    "subtitle": {
+      "type": "string"
     }
   }
 }

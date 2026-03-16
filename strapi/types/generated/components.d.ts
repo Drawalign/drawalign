@@ -537,7 +537,8 @@ export interface SolutionsHowItWorksSplit extends Struct.ComponentSchema {
   attributes: {
     card_items: Schema.Attribute.Component<'elements.list-item', true>;
     card_title: Schema.Attribute.String;
-    description: Schema.Attribute.Text;
+    description: Schema.Attribute.Blocks;
+    features: Schema.Attribute.Component<'elements.list-item', true>;
     title: Schema.Attribute.String;
   };
 }
@@ -569,6 +570,7 @@ export interface SolutionsPricingCard extends Struct.ComponentSchema {
     logo_right: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     name: Schema.Attribute.String & Schema.Attribute.Required;
     price: Schema.Attribute.String;
+    subtitle: Schema.Attribute.String;
   };
 }
 

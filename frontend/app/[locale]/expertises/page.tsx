@@ -8,19 +8,16 @@ import { SectionHeader } from "@/components/ui/SectionHeader";
 import { ThreeColCards } from "@/components/ui/ThreeColCards";
 import { buildPageMetadata } from "@/lib/metadata";
 import { getExpertisePage, getGlobal } from "@/lib/strapi";
+import type { LocalePageProps } from "@/type";
 
-type Props = {
-	params: Promise<{ locale: string }>;
-};
-
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export async function generateMetadata({ params }: LocalePageProps): Promise<Metadata> {
 	const { locale } = await params;
 	const [page, global] = await Promise.all([getExpertisePage(locale), getGlobal(locale)]);
 
 	return buildPageMetadata(page?.seo, global?.seo);
 }
 
-export default async function ExpertisesPage({ params }: Props) {
+export default async function ExpertisesPage({ params }: LocalePageProps) {
 	const { locale } = await params;
 	const page = await getExpertisePage(locale);
 
@@ -37,8 +34,10 @@ export default async function ExpertisesPage({ params }: Props) {
 			{page.hero && (
 				<PageHero eyebrow={page.hero.eyebrow} title={page.hero.title} subtitle={page.hero.text} />
 			)}
-			{page.three_col_cards && <ThreeColCards {...page.three_col_cards} />}
-			{page.fullWidthImage && <FullWidthImage image={page.fullWidthImage} className="mt-8" />}
+			{page.three_col_cards && (
+				<ThreeColCards {...page.three_col_cards} className="py-10 lg:py-20" />
+			)}
+			{page.fullWidthImage && <FullWidthImage image={page.fullWidthImage} />}
 			{page.cards_group && page.cards_group.length > 0 && (
 				<HomeSolutions items={page.cards_group} />
 			)}

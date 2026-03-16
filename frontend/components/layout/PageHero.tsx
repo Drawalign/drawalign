@@ -1,4 +1,5 @@
 import { cn } from "@/lib/utils";
+import { Section } from "../ui/Section";
 
 type Props = {
 	eyebrow?: string | null;
@@ -9,12 +10,15 @@ type Props = {
 
 export function PageHero({ eyebrow, title, subtitle, className }: Props) {
 	return (
-		<section className={cn("w-full bg-primary text-white", className)}>
-			<div className="mx-auto flex max-w-9xl flex-col gap-10 px-10 py-20 md:py-16">
-				{eyebrow && <p className="text-2xl">{eyebrow}</p>}
-				<h1 className="text-4xl md:text-[40px]">{title}</h1>
-				{subtitle && <p className="text-lg">{subtitle}</p>}
+		<Section
+			variant="md"
+			className={cn("w-full bg-primary py-10 text-white md:py-16 lg:py-20", className)}
+		>
+			<div className="flex flex-col gap-5 xl:gap-10">
+				{eyebrow && <p className="text-base xl:text-2xl">{eyebrow}</p>}
+				<h1 className="text-3xl md:text-40">{title}</h1>
+				{subtitle && <p className="text-base leading-tight lg:leading-normal">{subtitle}</p>}
 			</div>
-		</section>
+		</Section>
 	);
 }

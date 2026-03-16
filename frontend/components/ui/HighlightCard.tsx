@@ -38,23 +38,19 @@ export function HighlightCard({
 		>
 			{image && !imageRight && (
 				<div className="relative min-h-60">
-					<StrapiImage image={image} fill className="object-contain p-10" />
+					<StrapiImage image={image} fill className="object-contain p-4 lg:p-10" />
 				</div>
 			)}
 
-			<div className="flex flex-col gap-6 p-10 lg:p-16">
-				{title && (
-					<h2 className="text-3xl tracking-tighter lg:text-4xl">{title}</h2>
-				)}
-				{description && (
-					<p className="whitespace-pre-line text-sm lg:text-base">{description}</p>
-				)}
+			<div className="flex flex-col gap-6 p-5 lg:p-16">
+				{title && <h2 className="text-3xl tracking-tighter lg:text-4xl">{title}</h2>}
+				{description && <p className="whitespace-pre-line text-sm lg:text-base">{description}</p>}
 				{features && features.length > 0 && <FeatureList items={features} />}
 			</div>
 
 			{image && imageRight && (
 				<div className="relative min-h-60">
-					<StrapiImage image={image} fill className="object-contain p-10" />
+					<StrapiImage image={image} fill className="object-contain p-5 lg:p-10" />
 				</div>
 			)}
 		</div>

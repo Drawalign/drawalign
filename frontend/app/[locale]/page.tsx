@@ -12,19 +12,16 @@ import { StrapiImage } from "@/components/ui/StrapiImage";
 import { ThreeColCards } from "@/components/ui/ThreeColCards";
 import { buildPageMetadata } from "@/lib/metadata";
 import { getGlobal, getHome } from "@/lib/strapi";
+import type { LocalePageProps } from "@/type";
 
-type Props = {
-	params: Promise<{ locale: string }>;
-};
-
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export async function generateMetadata({ params }: LocalePageProps): Promise<Metadata> {
 	const { locale } = await params;
 	const [home, global] = await Promise.all([getHome(locale), getGlobal(locale)]);
 
 	return buildPageMetadata(home?.seo, global?.seo);
 }
 
-export default async function HomePage({ params }: Props) {
+export default async function HomePage({ params }: LocalePageProps) {
 	const { locale } = await params;
 	const { isEnabled: isDraft } = await draftMode();
 	const [home, global] = await Promise.all([getHome(locale), getGlobal(locale)]);
