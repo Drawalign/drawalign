@@ -855,7 +855,7 @@ export interface ApiHomeHome extends Struct.SingleTypeSchema {
     fullWidthImage: Schema.Attribute.Media<'images'> &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
-          localized: true;
+          localized: false;
         };
       }>;
     hero: Schema.Attribute.Component<'home.hero', false> &

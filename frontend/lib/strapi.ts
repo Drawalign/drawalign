@@ -370,7 +370,10 @@ export async function getArticleBySlug(
 			},
 			{ encodeValuesOnly: true },
 		);
-		const response: StrapiResponse<Article> = await fetchAPI(`/articles?${query}`, { draft, locale });
+		const response: StrapiResponse<Article> = await fetchAPI(`/articles?${query}`, {
+			draft,
+			locale,
+		});
 		return response.data[0] || null;
 	} catch (err) {
 		console.error("[getArticleBySlug] error:", err);

@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { ExpertiseCasesSection } from "@/components/expertises/ExpertiseCasesSection";
 import { HomeSolutions } from "@/components/home/HomeSolutions";
-import { PageHero } from "@/components/ui/PageHero";
 import { FullWidthImage } from "@/components/ui/FullWidthImage";
+import { PageHero } from "@/components/ui/PageHero";
 import { Section } from "@/components/ui/Section";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { ThreeColCards } from "@/components/ui/ThreeColCards";

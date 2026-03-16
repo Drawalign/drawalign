@@ -1,114 +1,112 @@
 {
-  "kind": "singleType",
-  "collectionName": "homes",
-  "info": {
-    "singularName": "home",
-    "pluralName": "homes",
-    "displayName": "Home"
-  },
-  "options": {
-    "draftAndPublish": true
-  },
-  "pluginOptions": {
-    "i18n": {
-      "localized": true
-    }
-  },
-  "attributes": {
-    "siteName": {
-      "type": "string"
-    },
-    "seo": {
-      "type": "component",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "component": "shared.seo",
-      "repeatable": false
-    },
-    "hero": {
-      "type": "component",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "component": "home.hero",
-      "repeatable": false
-    },
-    "expertises": {
-      "type": "component",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "component": "home.expertises-section",
-      "repeatable": false
-    },
-    "fullWidthImage": {
-      "type": "media",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "multiple": false,
-      "allowedTypes": [
-        "images"
-      ]
-    },
-    "quoteSection": {
-      "type": "component",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "component": "home.quote-section",
-      "repeatable": false
-    },
-    "convictions": {
-      "type": "component",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "component": "home.convictions-section",
-      "repeatable": false
-    },
-    "solutions": {
-      "type": "component",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "component": "home.solutions-section",
-      "repeatable": false
-    },
-    "testimonials": {
-      "type": "component",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "component": "home.testimonials-section",
-      "repeatable": false
-    },
-    "logos": {
-      "type": "component",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "component": "home.logos-section",
-      "repeatable": false
-    }
-  }
+	"kind": "singleType",
+	"collectionName": "homes",
+	"info": {
+		"singularName": "home",
+		"pluralName": "homes",
+		"displayName": "Home"
+	},
+	"options": {
+		"draftAndPublish": true
+	},
+	"pluginOptions": {
+		"i18n": {
+			"localized": true
+		}
+	},
+	"attributes": {
+		"siteName": {
+			"type": "string"
+		},
+		"seo": {
+			"type": "component",
+			"pluginOptions": {
+				"i18n": {
+					"localized": true
+				}
+			},
+			"component": "shared.seo",
+			"repeatable": false
+		},
+		"hero": {
+			"type": "component",
+			"pluginOptions": {
+				"i18n": {
+					"localized": true
+				}
+			},
+			"component": "home.hero",
+			"repeatable": false
+		},
+		"expertises": {
+			"type": "component",
+			"pluginOptions": {
+				"i18n": {
+					"localized": true
+				}
+			},
+			"component": "home.expertises-section",
+			"repeatable": false
+		},
+		"fullWidthImage": {
+			"type": "media",
+			"pluginOptions": {
+				"i18n": {
+					"localized": false
+				}
+			},
+			"multiple": false,
+			"allowedTypes": ["images"]
+		},
+		"quoteSection": {
+			"type": "component",
+			"pluginOptions": {
+				"i18n": {
+					"localized": true
+				}
+			},
+			"component": "home.quote-section",
+			"repeatable": false
+		},
+		"convictions": {
+			"type": "component",
+			"pluginOptions": {
+				"i18n": {
+					"localized": true
+				}
+			},
+			"component": "home.convictions-section",
+			"repeatable": false
+		},
+		"solutions": {
+			"type": "component",
+			"pluginOptions": {
+				"i18n": {
+					"localized": true
+				}
+			},
+			"component": "home.solutions-section",
+			"repeatable": false
+		},
+		"testimonials": {
+			"type": "component",
+			"pluginOptions": {
+				"i18n": {
+					"localized": true
+				}
+			},
+			"component": "home.testimonials-section",
+			"repeatable": false
+		},
+		"logos": {
+			"type": "component",
+			"pluginOptions": {
+				"i18n": {
+					"localized": true
+				}
+			},
+			"component": "home.logos-section",
+			"repeatable": false
+		}
+	}
 }

@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { PageHero } from "@/components/ui/PageHero";
 import { HowItWorksSplit } from "@/components/solutions/HowItWorksSplit";
 import { HowItWorksSteps } from "@/components/solutions/HowItWorksSteps";
 import { PricingSection } from "@/components/solutions/PricingSection";
 import { ResultSection } from "@/components/solutions/ResultSection";
 import { SolutionIntro } from "@/components/solutions/SolutionIntro";
 import { FullWidthImage } from "@/components/ui/FullWidthImage";
+import { PageHero } from "@/components/ui/PageHero";
 import { Section } from "@/components/ui/Section";
 import { StrapiImage } from "@/components/ui/StrapiImage";
 import { buildPageMetadata } from "@/lib/metadata";

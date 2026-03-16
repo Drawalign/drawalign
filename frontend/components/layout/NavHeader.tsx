@@ -1,5 +1,5 @@
-import Link from "next/link";
 import { StrapiImage } from "@/components/ui/StrapiImage";
+import { Link } from "@/i18n/navigation";
 import type { NavItem, StrapiImage as StrapiImageType } from "@/type";
 import { NavLinks } from "./NavLinks";
 import { NavMobileMenu } from "./NavMobileMenu";

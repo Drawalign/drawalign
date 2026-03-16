@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { PageHero } from "@/components/ui/PageHero";
 import { MethodeMaturity } from "@/components/methode/MethodeMaturity";
 import { MethodePrincipes } from "@/components/methode/MethodePrincipes";
 import { FullWidthImage } from "@/components/ui/FullWidthImage";
+import { PageHero } from "@/components/ui/PageHero";
 import { Section } from "@/components/ui/Section";
 import { StrapiImage } from "@/components/ui/StrapiImage";
 import { buildPageMetadata } from "@/lib/metadata";
