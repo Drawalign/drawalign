@@ -3,6 +3,10 @@ export type LocalePageProps = {
 	params: Promise<{ locale: string }>;
 };
 
+export type LocaleSlugPageProps = {
+	params: Promise<{ locale: string; slug: string }>;
+};
+
 // Type Strapi media
 export type StrapiImage = {
 	url: string;

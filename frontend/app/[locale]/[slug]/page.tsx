@@ -5,14 +5,14 @@ import { BlockRenderer } from "@/components/BlockRenderer";
 import { PreviewBanner } from "@/components/layout/PreviewBanner";
 import { buildPageMetadata } from "@/lib/metadata";
 import { getGlobal, getPageBySlug } from "@/lib/strapi";
-import type { LocalePageProps } from "@/type";
+import type { LocaleSlugPageProps } from "@/type";
 
 export async function generateStaticParams() {
 	// Generate for all locales — locale layout already handles per-locale
 	return [];
 }
 
-export async function generateMetadata({ params }: LocalePageProps): Promise<Metadata> {
+export async function generateMetadata({ params }: LocaleSlugPageProps): Promise<Metadata> {
 	const { locale, slug } = await params;
 	const [page, global] = await Promise.all([getPageBySlug(slug, { locale }), getGlobal(locale)]);
 	if (!page) return {};
@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: LocalePageProps): Promise<Met
 	return buildPageMetadata(pageSeo, global?.seo);
 }
 
-export default async function PageBySlug({ params }: LocalePageProps) {
+export default async function PageBySlug({ params }: LocaleSlugPageProps) {
 	const { locale, slug } = await params;
 	const { isEnabled: isDraft } = await draftMode();
 	const page = await getPageBySlug(slug, { draft: isDraft, locale });

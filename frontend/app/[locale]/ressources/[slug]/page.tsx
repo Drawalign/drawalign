@@ -6,13 +6,13 @@ import { PageHero } from "@/components/layout/PageHero";
 import { PreviewBanner } from "@/components/layout/PreviewBanner";
 import { buildPageMetadata } from "@/lib/metadata";
 import { getArticleBySlug, getGlobal } from "@/lib/strapi";
-import type { LocalePageProps } from "@/type";
+import type { LocaleSlugPageProps } from "@/type";
 
 export async function generateStaticParams() {
 	return [];
 }
 
-export async function generateMetadata({ params }: LocalePageProps): Promise<Metadata> {
+export async function generateMetadata({ params }: LocaleSlugPageProps): Promise<Metadata> {
 	const { locale, slug } = await params;
 	const [article, global] = await Promise.all([
 		getArticleBySlug(slug, { locale }),
@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: LocalePageProps): Promise<Met
 	return buildPageMetadata(pageSeo, global?.seo);
 }
 
-export default async function ArticlePage({ params }: LocalePageProps) {
+export default async function ArticlePage({ params }: LocaleSlugPageProps) {
 	const { locale, slug } = await params;
 	const { isEnabled: isDraft } = await draftMode();
 	const article = await getArticleBySlug(slug, { draft: isDraft, locale });
