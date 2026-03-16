@@ -603,6 +603,12 @@ export interface ApiClientCaseClientCase extends Struct.CollectionTypeSchema {
           localized: true;
         };
       }>;
+    roi: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     short_title: Schema.Attribute.String &
       Schema.Attribute.SetPluginOptions<{
         i18n: {

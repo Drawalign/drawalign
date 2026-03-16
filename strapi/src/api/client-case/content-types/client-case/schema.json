@@ -158,6 +158,14 @@
       "relation": "manyToMany",
       "target": "api::expertise.expertise",
       "mappedBy": "client_cases"
+    },
+    "roi": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     }
   }
 }
