@@ -631,12 +631,6 @@ export interface ApiClientCaseClientCase extends Struct.CollectionTypeSchema {
         };
       }>;
     tags: Schema.Attribute.Relation<'manyToMany', 'api::case-tag.case-tag'>;
-    thumbnail_text: Schema.Attribute.String &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
     title: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.SetPluginOptions<{

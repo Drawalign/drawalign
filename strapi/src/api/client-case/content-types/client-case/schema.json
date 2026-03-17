@@ -1,171 +1,161 @@
 {
-  "kind": "collectionType",
-  "collectionName": "client_cases",
-  "info": {
-    "singularName": "client-case",
-    "pluralName": "client-cases",
-    "displayName": "Cas clients"
-  },
-  "options": {
-    "draftAndPublish": true
-  },
-  "pluginOptions": {
-    "i18n": {
-      "localized": true
-    }
-  },
-  "attributes": {
-    "title": {
-      "type": "string",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "required": true
-    },
-    "short_title": {
-      "type": "string",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
-    },
-    "thumbnail_text": {
-      "type": "string",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
-    },
-    "background": {
-      "type": "enumeration",
-      "required": true,
-      "default": "primary",
-      "enum": [
-        "primary",
-        "secondary"
-      ]
-    },
-    "features": {
-      "type": "component",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "component": "elements.list-item",
-      "repeatable": true
-    },
-    "objectives": {
-      "type": "component",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "component": "elements.list-item",
-      "repeatable": true
-    },
-    "tags": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::case-tag.case-tag",
-      "inversedBy": "client_cases"
-    },
-    "context_text": {
-      "type": "text",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
-    },
-    "context_items": {
-      "type": "component",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "component": "elements.list-item",
-      "repeatable": true
-    },
-    "problem_text": {
-      "type": "text",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
-    },
-    "problem_consequence": {
-      "type": "text",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
-    },
-    "solution_cycle_name": {
-      "type": "string",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
-    },
-    "solution_steps": {
-      "type": "component",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "component": "expertises.solution-step",
-      "repeatable": true
-    },
-    "results_metrics": {
-      "type": "component",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "component": "elements.metric-item",
-      "repeatable": true
-    },
-    "results_benefit": {
-      "type": "text",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
-    },
-    "results_feedback": {
-      "type": "text",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
-    },
-    "expertises": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::expertise.expertise",
-      "mappedBy": "client_cases"
-    },
-    "roi": {
-      "type": "string",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
-    }
-  }
+	"kind": "collectionType",
+	"collectionName": "client_cases",
+	"info": {
+		"singularName": "client-case",
+		"pluralName": "client-cases",
+		"displayName": "Cas clients"
+	},
+	"options": {
+		"draftAndPublish": true
+	},
+	"pluginOptions": {
+		"i18n": {
+			"localized": true
+		}
+	},
+	"attributes": {
+		"title": {
+			"type": "string",
+			"pluginOptions": {
+				"i18n": {
+					"localized": true
+				}
+			},
+			"required": true
+		},
+		"short_title": {
+			"type": "string",
+			"pluginOptions": {
+				"i18n": {
+					"localized": true
+				}
+			}
+		},
+
+		"background": {
+			"type": "enumeration",
+			"required": true,
+			"default": "primary",
+			"enum": ["primary", "secondary"]
+		},
+		"features": {
+			"type": "component",
+			"pluginOptions": {
+				"i18n": {
+					"localized": true
+				}
+			},
+			"component": "elements.list-item",
+			"repeatable": true
+		},
+		"objectives": {
+			"type": "component",
+			"pluginOptions": {
+				"i18n": {
+					"localized": true
+				}
+			},
+			"component": "elements.list-item",
+			"repeatable": true
+		},
+		"tags": {
+			"type": "relation",
+			"relation": "manyToMany",
+			"target": "api::case-tag.case-tag",
+			"inversedBy": "client_cases"
+		},
+		"context_text": {
+			"type": "text",
+			"pluginOptions": {
+				"i18n": {
+					"localized": true
+				}
+			}
+		},
+		"context_items": {
+			"type": "component",
+			"pluginOptions": {
+				"i18n": {
+					"localized": true
+				}
+			},
+			"component": "elements.list-item",
+			"repeatable": true
+		},
+		"problem_text": {
+			"type": "text",
+			"pluginOptions": {
+				"i18n": {
+					"localized": true
+				}
+			}
+		},
+		"problem_consequence": {
+			"type": "text",
+			"pluginOptions": {
+				"i18n": {
+					"localized": true
+				}
+			}
+		},
+		"solution_cycle_name": {
+			"type": "string",
+			"pluginOptions": {
+				"i18n": {
+					"localized": true
+				}
+			}
+		},
+		"solution_steps": {
+			"type": "component",
+			"pluginOptions": {
+				"i18n": {
+					"localized": true
+				}
+			},
+			"component": "expertises.solution-step",
+			"repeatable": true
+		},
+		"results_metrics": {
+			"type": "component",
+			"pluginOptions": {
+				"i18n": {
+					"localized": true
+				}
+			},
+			"component": "elements.metric-item",
+			"repeatable": true
+		},
+		"results_benefit": {
+			"type": "text",
+			"pluginOptions": {
+				"i18n": {
+					"localized": true
+				}
+			}
+		},
+		"results_feedback": {
+			"type": "text",
+			"pluginOptions": {
+				"i18n": {
+					"localized": true
+				}
+			}
+		},
+		"expertises": {
+			"type": "relation",
+			"relation": "manyToMany",
+			"target": "api::expertise.expertise",
+			"mappedBy": "client_cases"
+		},
+		"roi": {
+			"type": "string",
+			"pluginOptions": {
+				"i18n": {
+					"localized": true
+				}
+			}
+		}
+	}
 }

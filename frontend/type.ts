@@ -348,7 +348,6 @@ export type ClientCase = {
 	documentId: string;
 	title: string;
 	short_title: string | null;
-	thumbnail_text: string | null;
 	background: "primary" | "secondary";
 	features: ListItem[] | null;
 	objectives: ListItem[] | null;
