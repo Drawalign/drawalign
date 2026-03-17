@@ -54,7 +54,7 @@ function ItemList({ items }: { items: ConvictionItem[] }) {
     <div className="flex flex-col gap-6">
       {items.map((item) => (
         <div key={item.id} className="border-foreground border-l px-5">
-          <p className="text-lg leading-tight">
+          <p className="text-base leading-tight lg:text-lg">
             <span className="font-medium">{item.title}</span>
             {item.text && ` : ${item.text}`}
           </p>
@@ -148,7 +148,7 @@ export function MethodePrincipes({
           {principles_items?.length ? (
             <Card variant="light" className="flex flex-col gap-8">
               {principles_title && (
-                <h2 className="font-medium text-2xl uppercase md:text-3xl">
+                <h2 className="font-medium text-xl uppercase md:text-3xl">
                   {principles_title}
                 </h2>
               )}
@@ -159,7 +159,7 @@ export function MethodePrincipes({
           {theoretical_items?.length ? (
             <Card variant="light" className="flex flex-col gap-8">
               {theoretical_title && (
-                <h2 className="font-medium text-2xl uppercase md:text-3xl">
+                <h2 className="font-medium text-xl uppercase md:text-3xl">
                   {theoretical_title}
                 </h2>
               )}

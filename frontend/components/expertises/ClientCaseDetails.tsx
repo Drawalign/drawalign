@@ -57,7 +57,7 @@ function HighlightBox({
   return (
     <div
       className={cn(
-        "ml-27 flex flex-col gap-2 rounded-xl p-5",
+        "flex flex-col gap-2 rounded-xl p-5 lg:ml-27",
         bgClass[variant],
         className,
       )}
@@ -178,7 +178,7 @@ export function ClientCaseDetails({
           {item.solution_steps && item.solution_steps.length > 0 && (
             <div className="flex flex-col gap-5">
               {item.solution_steps.map((step) => (
-                <div key={step.id} className="flex gap-3">
+                <div key={step.id} className="flex flex-col gap-3 lg:flex-row">
                   <span
                     className={cn(
                       "shrink-0 self-start rounded-sm px-4 py-2 font-bold text-xs",

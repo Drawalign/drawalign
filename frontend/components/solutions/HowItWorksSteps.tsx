@@ -10,11 +10,11 @@ export function HowItWorksSteps({ title, steps }: HowItWorksStepsType) {
       {title && (
         <h2 className="mb-10 text-3xl tracking-tighter lg:text-4xl">{title}</h2>
       )}
-      <div className="grid grid-cols-1 gap-6 md:grid-cols-3 md:grid-rows-[auto_auto_1fr]">
+      <div className="grid grid-cols-1 gap-12 md:grid-cols-3 md:grid-rows-[auto_auto_1fr] lg:gap-6">
         {steps.map((step, index) => (
           <div
             key={step.id}
-            className="grid grid-rows-subgrid gap-x-0 gap-y-5 border-light-gray border-l p-8 md:row-span-3"
+            className="flex flex-col gap-5 border-light-gray border-l px-8 md:row-span-3 md:grid md:grid-rows-subgrid md:gap-y-5 lg:p-8"
           >
             <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary font-medium text-base text-white">
               {index + 1}

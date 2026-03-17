@@ -26,7 +26,7 @@ export function MethodeMaturity({
         </div>
       )}
       {/* Droite : titre + texte + CTA */}
-      <div className="flex flex-col justify-between gap-8 bg-primary p-14">
+      <div className="flex flex-col justify-between gap-8 bg-primary p-8 lg:p-14">
         <div className="flex flex-col gap-6">
           <h2 className="text-2xl text-white md:text-4xl lg:text-40">
             {maturity_title}
@@ -39,12 +39,12 @@ export function MethodeMaturity({
         </div>
         <div className="border-l px-5">
           {maturity_title && (
-            <h3 className="font-bold text-2xl text-white leading-normal">
+            <h3 className="font-bold text-base text-white leading-tight lg:text-2xl">
               {highlight_title}
             </h3>
           )}
           {highlight_text && (
-            <p className="text-2xl text-white leading-tight">
+            <p className="text-base text-white leading-tight lg:text-2xl">
               {highlight_text}
             </p>
           )}
