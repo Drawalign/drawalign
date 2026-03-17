@@ -48,9 +48,12 @@ export function ClientCaseList({ items, onSelect }: Props) {
               {item.objectives && item.objectives.length > 0 && (
                 <div className="flex flex-col gap-6">
                   <h4 className="text-2xl">Objectifs</h4>
-                  <ul className="flex list-disc flex-col gap-1 pl-5">
+                  <ul className="flex list-disc flex-col pl-5">
                     {item.objectives.map((o) => (
-                      <li key={o.id} className="text-sm">
+                      <li
+                        key={o.id}
+                        className="text-sm lg:text-[15px] leading-tight"
+                      >
                         {o.text}
                       </li>
                     ))}
