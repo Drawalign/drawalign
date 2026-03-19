@@ -36,10 +36,7 @@ export function Section({
 }: Props) {
 	if (variant === "full") {
 		return (
-			<section
-				id={id}
-				className={cn(!noPadding && defaultPadding.full, className)}
-			>
+			<section id={id} className={cn(!noPadding && defaultPadding.full, className)}>
 				<div className={cn("mx-auto max-w-9xl px-5", innerClassName)}>{children}</div>
 			</section>
 		);

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { draftMode } from "next/headers";
 
 export const dynamic = "force-dynamic";
+
 import { notFound } from "next/navigation";
 import { BlockRenderer } from "@/components/BlockRenderer";
 import { PreviewBanner } from "@/components/layout/PreviewBanner";

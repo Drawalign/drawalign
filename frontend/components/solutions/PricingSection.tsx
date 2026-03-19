@@ -1,7 +1,9 @@
+import { BentoCard } from "@/components/ui/BentoCard";
 import { Button } from "@/components/ui/button";
 import { FeatureList } from "@/components/ui/FeatureList";
 import { Section } from "@/components/ui/Section";
 import { SectionHeader } from "@/components/ui/SectionHeader";
+import { StaggerGrid } from "@/components/ui/StaggerGrid";
 import { StrapiImage } from "@/components/ui/StrapiImage";
 import { cn } from "@/lib/utils";
 import { bgClass } from "@/lib/variants";
@@ -20,18 +22,21 @@ function PricingCard({
 	buttonVariant = "foreground",
 	logoGap = "gap-2",
 	priceWhite = false,
+	style,
 }: SolutionsPricingCard & {
 	buttonVariant?: "primary" | "foreground";
 	logoGap?: string;
 	priceWhite?: boolean;
+	style?: React.CSSProperties;
 }) {
 	return (
-		<div
+		<BentoCard
 			className={cn(
 				"flex flex-col gap-6 rounded-2xl p-8 lg:p-10",
 				background === "accent-peach" ? "text-foreground" : "text-white",
 				bgClass[background ?? "primary"],
 			)}
+			style={style}
 		>
 			<div>
 				{logo ? (
@@ -74,7 +79,7 @@ function PricingCard({
 					</Button>
 				</div>
 			)}
-		</div>
+		</BentoCard>
 	);
 }
 
@@ -90,21 +95,31 @@ export function PricingSection({ header, offers, combos }: Props) {
 			{header && <SectionHeader title={header.title} eyebrow={header.eyebrow ?? undefined} />}
 
 			{offers.length > 0 && (
-				<div className="grid grid-cols-1 gap-5 md:grid-cols-2">
-					{offers.map((offer) => (
-						<PricingCard key={offer.id} {...offer} buttonVariant="primary" logoGap="gap-1" />
+				<StaggerGrid className="grid grid-cols-1 gap-5 md:grid-cols-2">
+					{offers.map((offer, index) => (
+						<PricingCard
+							key={offer.id}
+							{...offer}
+							buttonVariant="primary"
+							logoGap="gap-1"
+							style={{ animationDelay: `${index * 300}ms` }}
+						/>
 					))}
-				</div>
+				</StaggerGrid>
 			)}
 
 			{combos.length > 0 && (
-				<div className="flex flex-col gap-5">
-					<div className="grid grid-cols-1 gap-5 md:grid-cols-2">
-						{combos.map((combo) => (
-							<PricingCard key={combo.id} {...combo} logoGap="gap-4" priceWhite />
-						))}
-					</div>
-				</div>
+				<StaggerGrid className="grid grid-cols-1 gap-5 md:grid-cols-2">
+					{combos.map((combo, index) => (
+						<PricingCard
+							key={combo.id}
+							{...combo}
+							logoGap="gap-4"
+							priceWhite
+							style={{ animationDelay: `${index * 300}ms` }}
+						/>
+					))}
+				</StaggerGrid>
 			)}
 		</Section>
 	);

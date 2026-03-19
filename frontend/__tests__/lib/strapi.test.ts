@@ -29,7 +29,7 @@ describe("fetchAPI", () => {
 		const { fetchAPI } = await import("@/lib/strapi");
 		await fetchAPI("/pages");
 		expect(fetch).toHaveBeenCalledWith(
-			"http://localhost:1337/api/pages",
+			"http://localhost:1337/api/pages?locale=fr",
 			expect.objectContaining({ next: { tags: ["strapi-content"] } }),
 		);
 	});
@@ -38,7 +38,7 @@ describe("fetchAPI", () => {
 		const { fetchAPI } = await import("@/lib/strapi");
 		await fetchAPI("/pages?foo=bar", { draft: true });
 		expect(fetch).toHaveBeenCalledWith(
-			"http://localhost:1337/api/pages?foo=bar&status=draft",
+			"http://localhost:1337/api/pages?foo=bar&locale=fr&status=draft",
 			expect.objectContaining({ cache: "no-store" }),
 		);
 	});

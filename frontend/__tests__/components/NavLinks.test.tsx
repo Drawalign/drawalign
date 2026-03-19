@@ -2,9 +2,10 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
 
-vi.mock("next/navigation", () => ({ usePathname: () => "/" }));
-vi.mock("next/link", () => ({
-	default: ({
+vi.mock("next-intl", () => ({ useLocale: () => "fr" }));
+vi.mock("@/i18n/navigation", () => ({
+	usePathname: () => "/",
+	Link: ({
 		href,
 		children,
 		onClick,

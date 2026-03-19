@@ -2,6 +2,7 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/Card";
 import { Section } from "@/components/ui/Section";
+import { StaggerGrid } from "@/components/ui/StaggerGrid";
 import { StrapiImage } from "@/components/ui/StrapiImage";
 import { cn } from "@/lib/utils";
 import { bgClass } from "@/lib/variants";
@@ -88,10 +89,10 @@ export function MethodePrincipes({
       {(left || right || logo_hldb) && (
         <div className="relative grid grid-cols-1 items-center gap-3 pt-3 lg:grid-cols-[1fr_auto_1fr]">
           {/* ligne horizontale desktop */}
-          <div className="absolute inset-0 z-0 m-auto hidden h-px w-80 -translate-y-1/2 bg-primary lg:block lg:w-113.5" />
+          <div className="absolute inset-0 z-0 m-auto hidden h-px w-80 -translate-y-1/2 bg-primary lg:block lg:w-115" />
           {/* ligne verticale mobile/tablet */}
           <div className="absolute top-[10%] bottom-[10%] left-1/2 z-0 w-px -translate-x-1/2 bg-primary lg:hidden" />
-          <div className="relative z-10 flex justify-center lg:justify-end">
+          <div className="relative z-10 flex justify-center transition-all duration-300 hover:mr-1 lg:justify-end">
             {left && <DiagramCardBlock card={left} />}
           </div>
           <div className="relative mx-auto flex aspect-square w-64 items-center justify-center lg:w-107.5">
@@ -138,15 +139,15 @@ export function MethodePrincipes({
               </div>
             )}
           </div>
-          <div className="relative z-10 flex justify-center lg:block">
+          <div className="relative z-10 flex justify-center transition-all duration-300 hover:ml-1 lg:block">
             {right && <DiagramCardBlock card={right} />}
           </div>
         </div>
       )}
       <div className="flex flex-col gap-10">
-        <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
+        <StaggerGrid className="grid grid-cols-1 gap-5 md:grid-cols-2">
           {principles_items?.length ? (
-            <Card variant="light" className="flex flex-col gap-8">
+            <Card variant="light" className="stagger-card flex flex-col gap-8" style={{ animationDelay: "0ms" }}>
               {principles_title && (
                 <h2 className="font-medium text-xl uppercase md:text-3xl">
                   {principles_title}
@@ -157,7 +158,7 @@ export function MethodePrincipes({
           ) : null}
 
           {theoretical_items?.length ? (
-            <Card variant="light" className="flex flex-col gap-8">
+            <Card variant="light" className="stagger-card flex flex-col gap-8" style={{ animationDelay: "300ms" }}>
               {theoretical_title && (
                 <h2 className="font-medium text-xl uppercase md:text-3xl">
                   {theoretical_title}
@@ -166,7 +167,7 @@ export function MethodePrincipes({
               <ItemList items={theoretical_items} />
             </Card>
           ) : null}
-        </div>
+        </StaggerGrid>
 
         {section3_cta && (
           <div className="flex justify-center">

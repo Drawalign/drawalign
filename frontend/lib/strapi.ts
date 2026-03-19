@@ -216,10 +216,10 @@ export async function getMethodeHldbPage(locale = "fr"): Promise<MethodeHldbPage
 			`/methode-hldb?${query}`,
 			{ locale },
 		);
-		return response.data;
+		return response.data ?? (locale !== "fr" ? getMethodeHldbPage("fr") : null);
 	} catch (err) {
 		console.error("[getMethodeHldbPage] error:", err);
-		return null;
+		return locale !== "fr" ? getMethodeHldbPage("fr") : null;
 	}
 }
 
