@@ -68,7 +68,7 @@ export default async function PartenairesPage({ params }: LocalePageProps) {
       )}
       {page.fullWidthImage2 && <FullWidthImage image={page.fullWidthImage2} />}
       {page.quote_text && page.quote_author && (
-        <Section variant="full" className="bg-accent-peach px-20">
+        <Section variant="full" className="bg-accent-peach px-5 lg:px-20">
           <Quote
             text={page.quote_text}
             author={page.quote_author}

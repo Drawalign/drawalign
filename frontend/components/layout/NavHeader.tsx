@@ -19,7 +19,7 @@ export function NavHeader({ siteName, items, logo }: Props) {
             <StrapiImage
               image={logo}
               alt={logo.alternativeText ?? siteName ?? "Logo"}
-              className="mr-2 inline-block h-8 w-auto"
+              className="mr-2 inline-block h-8 w-auto lg:h-12"
             />
           )}
           {!logo && siteName}
