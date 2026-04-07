@@ -22,7 +22,7 @@ export function MethodeMaturity({
 			{/* Gauche : image */}
 			{maturity_image && (
 				<div className="relative min-h-72 bg-secondary md:min-h-0">
-					<StrapiImage image={maturity_image} fill className="" />
+					<StrapiImage image={maturity_image} fill className="object-contain" />
 				</div>
 			)}
 			{/* Droite : titre + texte + CTA */}

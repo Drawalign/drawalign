@@ -23,7 +23,7 @@ export function HomeQuote({ image, title, text, cta }: QuoteSection) {
 			{/* Droite : image */}
 			{image && (
 				<div className="relative min-h-72 bg-secondary md:min-h-0">
-					<StrapiImage image={image} fill className="" />
+					<StrapiImage image={image} fill className="object-contain" />
 				</div>
 			)}
 		</SplitCard>
