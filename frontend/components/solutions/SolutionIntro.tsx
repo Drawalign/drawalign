@@ -24,7 +24,7 @@ export function SolutionIntro({
 			{image && (
 				<div className={cn("", imageRight ? "order-last" : "")}>
 					<div className="relative min-h-60 overflow-hidden rounded-2xl md:h-full lg:w-98">
-						<StrapiImage image={image} fill className="aspect-square object-cover" />
+						<StrapiImage image={image} fill className="aspect-square object-cover object-bottom" />
 					</div>
 				</div>
 			)}
