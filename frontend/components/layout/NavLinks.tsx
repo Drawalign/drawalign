@@ -27,7 +27,8 @@ export function NavLinks({ items, variant, onNavigate }: Props) {
 				return (
 					<Link
 						key={item.id}
-						href={`/${item.href}`}
+						// eslint-disable-next-line @typescript-eslint/no-explicit-any
+					href={`/${item.href}` as any}
 						onClick={onNavigate}
 						className={cn(linkClass, isActive ? "text-primary" : "text-foreground")}
 					>
