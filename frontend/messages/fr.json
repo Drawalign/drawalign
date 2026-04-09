@@ -7,5 +7,20 @@
 	"preview": {
 		"banner": "Mode aperçu activé",
 		"exit": "Quitter l'aperçu"
+	},
+	"clientCase": {
+		"cta": "Voir le cas client",
+		"objectives": "Objectifs",
+		"tags": "Enjeux",
+		"sectionContext": "Le contexte",
+		"sectionProblem": "Le problème",
+		"sectionSolution": "La solution DRAW ALIGN",
+		"sectionResults": "Les résultats mesurés",
+		"labelConsequence": "Conséquence",
+		"labelRevelation": "Révélation",
+		"labelBenefit": "Bénéfice concret :",
+		"labelFeedback": "Feedback client",
+		"discoverMore": "Découvrir d'autres cas clients",
+		"discoverThis": "Découvrir ce cas"
 	}
 }

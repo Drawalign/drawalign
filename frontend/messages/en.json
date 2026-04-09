@@ -7,5 +7,20 @@
 	"preview": {
 		"banner": "Preview mode enabled",
 		"exit": "Exit preview"
+	},
+	"clientCase": {
+		"cta": "See the case study",
+		"objectives": "Objectives",
+		"tags": "Challenges",
+		"sectionContext": "The context",
+		"sectionProblem": "The problem",
+		"sectionSolution": "The DRAW ALIGN solution",
+		"sectionResults": "Measured results",
+		"labelConsequence": "Consequence",
+		"labelRevelation": "Revelation",
+		"labelBenefit": "Concrete benefit:",
+		"labelFeedback": "Client feedback",
+		"discoverMore": "Discover other case studies",
+		"discoverThis": "Discover this case"
 	}
 }

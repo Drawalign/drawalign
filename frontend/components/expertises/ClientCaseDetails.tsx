@@ -1,4 +1,5 @@
 import { ArrowRight } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { ArrowIcon } from "@/components/ui/ArrowIcon";
 import { BoldPrefixText } from "@/components/ui/BoldPrefixText";
 import { Section } from "@/components/ui/Section";
@@ -93,6 +94,7 @@ function BoldPrefixList({
 }
 
 export function ClientCaseDetails({ items, displayedIndex, fading, onSelect }: Props) {
+	const t = useTranslations("clientCase");
 	const item = items[displayedIndex];
 
 	return (
@@ -119,7 +121,7 @@ export function ClientCaseDetails({ items, displayedIndex, fading, onSelect }: P
 				</div>
 
 				{/* 1. Le contexte */}
-				<NumberedSection number={1} title="Le contexte">
+				<NumberedSection number={1} title={t("sectionContext")}>
 					{item.context_text && (
 						<p className="whitespace-pre-line text-muted-foreground text-sm leading-normal">
 							{item.context_text}
@@ -131,17 +133,17 @@ export function ClientCaseDetails({ items, displayedIndex, fading, onSelect }: P
 				</NumberedSection>
 
 				{/* 2. Le problème */}
-				<NumberedSection number={2} title="Le problème : la dilution de l'identité">
+				<NumberedSection number={2} title={t("sectionProblem")}>
 					{item.problem_text && (
 						<p className="whitespace-pre-line text-muted-foreground text-sm">{item.problem_text}</p>
 					)}
 					{item.problem_consequence && (
-						<HighlightBox label="Conséquence" variant="secondary" text={item.problem_consequence} />
+						<HighlightBox label={t("labelConsequence")} variant="secondary" text={item.problem_consequence} />
 					)}
 				</NumberedSection>
 
 				{/* 3. La solution */}
-				<NumberedSection number={3} title="La solution DRAW ALIGN">
+				<NumberedSection number={3} title={t("sectionSolution")}>
 					{item.solution_cycle_name && (
 						<p className="font-medium text-foreground text-lg">{item.solution_cycle_name}</p>
 					)}
@@ -168,7 +170,7 @@ export function ClientCaseDetails({ items, displayedIndex, fading, onSelect }: P
 										)}
 										{step.revelation && (
 											<HighlightBox
-												label="Révélation"
+												label={t("labelRevelation")}
 												text={step.revelation}
 												variant="secondary"
 												className="ml-0"
@@ -184,7 +186,7 @@ export function ClientCaseDetails({ items, displayedIndex, fading, onSelect }: P
 				{/* 4. Les résultats */}
 				<NumberedSection
 					number={4}
-					title={`Les résultats mesurés${item.roi ? ` (ROI ${item.roi})` : ""}`}
+					title={`${t("sectionResults")}${item.roi ? ` (ROI ${item.roi})` : ""}`}
 				>
 					{item.results_metrics && item.results_metrics.length > 0 && (
 						<ul className="flex flex-col gap-3">
@@ -206,14 +208,14 @@ export function ClientCaseDetails({ items, displayedIndex, fading, onSelect }: P
 					)}
 					{item.results_benefit && (
 						<div className="flex flex-col gap-4">
-							<p className="font-medium text-lg">Bénéfice concret :</p>
+							<p className="font-medium text-lg">{t("labelBenefit")}</p>
 							<p className="whitespace-pre-line text-base text-muted-foreground leading-tight">
 								{item.results_benefit}
 							</p>
 						</div>
 					)}
 					{item.results_feedback && (
-						<HighlightBox label="Feedback client" text={item.results_feedback} variant="primary" />
+						<HighlightBox label={t("labelFeedback")} text={item.results_feedback} variant="primary" />
 					)}
 				</NumberedSection>
 			</div>
@@ -221,7 +223,7 @@ export function ClientCaseDetails({ items, displayedIndex, fading, onSelect }: P
 			{/* Thumbnails */}
 			{items.length > 1 && (
 				<div className="flex flex-col gap-6">
-					<h4 className="text-2xl tracking-tight">Découvrir d&apos;autres cas clients</h4>
+					<h4 className="text-2xl tracking-tight">{t("discoverMore")}</h4>
 					<div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
 						{items
 							.filter((_, i) => i !== displayedIndex)
@@ -249,7 +251,7 @@ export function ClientCaseDetails({ items, displayedIndex, fading, onSelect }: P
 											<p className="text-muted-foreground text-sm leading-normal">{other.title}</p>
 										)}
 										<span className="mt-auto flex items-center gap-1 font-medium text-primary text-sm">
-											Découvrir ce cas <ArrowIcon />
+											{t("discoverThis")} <ArrowIcon />
 										</span>
 									</button>
 								);
