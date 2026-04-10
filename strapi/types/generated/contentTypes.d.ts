@@ -817,7 +817,12 @@ export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
           localized: true;
         };
       }>;
-    footer: Schema.Attribute.Component<'shared.footer', false>;
+    footer: Schema.Attribute.Component<'shared.footer', false> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::global.global'>;
     logo: Schema.Attribute.Media<'images' | 'files'> &
