@@ -92,7 +92,7 @@ export function HomeHero({ eyebrow, title, text, image, bubbles }: HomeHeroType)
 					{/* Colonne droite */}
 					{image && (
 						<div className="relative aspect-533/409 md:mx-18 lg:mx-0">
-							<StrapiImage image={image} fill className="object-contain" />
+							<StrapiImage image={image} fill priority sizes="(min-width: 1024px) 42vw, 100vw" className="object-contain" />
 							{bubbles && bubbles.length > 0 && (
 								<div className="absolute inset-0">
 									{bubbles.map((bubble, index) => {

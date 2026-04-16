@@ -25,6 +25,9 @@ const nextConfig: NextConfig = {
 		];
 	},
 	images: {
+		minimumCacheTTL: 2678400, // 31 jours
+		formats: ["image/webp"],
+		qualities: [75],
 		remotePatterns: [
 			{
 				protocol: strapiUrl.protocol.replace(":", "") as "http" | "https",
