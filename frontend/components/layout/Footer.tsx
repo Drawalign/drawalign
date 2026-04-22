@@ -122,11 +122,25 @@ export function Footer({ footer, siteName, sitemapItems }: Props) {
 										)}
 										{footer.logo_esf && (
 											<div className="rounded-md bg-white p-2">
-												<StrapiImage
-													image={footer.logo_esf}
-													alt={footer.logo_esf?.alternativeText || name}
-													className="h-8 w-auto"
-												/>
+												{footer.legalLinks?.[2]?.href ? (
+													<a
+														href={footer.legalLinks[2].href}
+														target="_blank"
+														rel="noopener noreferrer"
+													>
+														<StrapiImage
+															image={footer.logo_esf}
+															alt={footer.logo_esf?.alternativeText || name}
+															className="h-8 w-auto"
+														/>
+													</a>
+												) : (
+													<StrapiImage
+														image={footer.logo_esf}
+														alt={footer.logo_esf?.alternativeText || name}
+														className="h-8 w-auto"
+													/>
+												)}
 											</div>
 										)}
 									</div>

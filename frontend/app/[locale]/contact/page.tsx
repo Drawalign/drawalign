@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { getTranslations } from "next-intl/server";
 import { ContactForm } from "@/components/contact/ContactForm";
 import { PageHero } from "@/components/ui/PageHero";
 import { Section } from "@/components/ui/Section";
@@ -17,7 +18,11 @@ export async function generateMetadata({ params }: LocalePageProps): Promise<Met
 
 export default async function ContactPage({ params }: LocalePageProps) {
 	const { locale } = await params;
-	const [page, global] = await Promise.all([getContactPage(locale), getGlobal(locale)]);
+	const [page, global, t] = await Promise.all([
+		getContactPage(locale),
+		getGlobal(locale),
+		getTranslations("contact"),
+	]);
 
 	if (!page) {
 		return (
@@ -47,13 +52,13 @@ export default async function ContactPage({ params }: LocalePageProps) {
 				<div className="grid grid-cols-1 gap-5 md:grid-cols-2">
 					{/* Formulaire */}
 					<div className="flex flex-col gap-6 rounded-2xl bg-primary p-4 text-white lg:p-10">
-						<h2 className="text-2xl tracking-tight lg:text-32">Envoyez-nous un message</h2>
+						<h2 className="text-2xl tracking-tight lg:text-32">{t("formTitle")}</h2>
 						<ContactForm />
 					</div>
 
 					{/* Coordonnées */}
 					<div className="flex flex-col gap-6 rounded-2xl bg-secondary p-4 text-white lg:p-10">
-						<h2 className="text-2xl tracking-tight lg:text-32">Nos coordonnées</h2>
+						<h2 className="text-2xl tracking-tight lg:text-32">{t("coordsTitle")}</h2>
 						<div className="flex flex-col gap-4 text-sm lg:text-xl">
 							{page.adress && <p className="whitespace-pre-line">{page.adress}</p>}
 							<div>

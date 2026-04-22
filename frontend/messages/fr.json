@@ -8,6 +8,18 @@
 		"banner": "Mode aperçu activé",
 		"exit": "Quitter l'aperçu"
 	},
+	"contact": {
+		"formTitle": "Envoyez-nous un message",
+		"coordsTitle": "Nos coordonnées",
+		"placeholderLastName": "Nom",
+		"placeholderFirstName": "Prénom",
+		"placeholderEmail": "Email",
+		"placeholderMessage": "Message",
+		"submit": "Envoyer",
+		"submitting": "Envoi…",
+		"success": "Merci, votre message a bien été envoyé. Nous vous répondrons dans les plus brefs délais.",
+		"error": "Le formulaire de contact n'est pas encore prêt. Vous pouvez nous contacter directement à contact@draw-align.com"
+	},
 	"clientCase": {
 		"cta": "Voir le cas client",
 		"objectives": "Objectifs",

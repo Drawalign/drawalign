@@ -1,9 +1,12 @@
 "use client";
 
 import { useState } from "react";
+import { useTranslations } from "next-intl";
+
 import { Button } from "@/components/ui/button";
 
 export function ContactForm() {
+  const t = useTranslations("contact");
   const [pending, setPending] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -35,19 +38,12 @@ export function ContactForm() {
       setSuccess(true);
       form.reset();
     } else {
-      setError(
-        "Le formulaire de contact n'es pas encore prêt. Vous pouvez nous contacter directement à contact@draw-align.com",
-      );
+      setError(t("error"));
     }
   }
 
   if (success) {
-    return (
-      <p className="text-sm text-white">
-        Merci, votre message a bien été envoyé. Nous vous répondrons dans les
-        plus brefs délais.
-      </p>
-    );
+    return <p className="text-sm text-white">{t("success")}</p>;
   }
 
   return (
@@ -55,26 +51,26 @@ export function ContactForm() {
       <div className="grid grid-cols-1 gap-4 text-[#140D4A99]">
         <input
           name="lastName"
-          placeholder="Nom"
+          placeholder={t("placeholderLastName")}
           required
           className="rounded-lg bg-white px-4 py-3 outline-none focus:bg-white"
         />
         <input
           name="firstName"
-          placeholder="Prénom"
+          placeholder={t("placeholderFirstName")}
           required
           className="rounded-lg bg-white px-4 py-3 outline-none focus:bg-white"
         />
         <input
           name="email"
           type="email"
-          placeholder="Email"
+          placeholder={t("placeholderEmail")}
           required
           className="rounded-lg bg-white px-4 py-3 outline-none focus:bg-white"
         />
         <textarea
           name="message"
-          placeholder="Message"
+          placeholder={t("placeholderMessage")}
           required
           rows={5}
           className="resize-none rounded-lg bg-white px-4 py-3 outline-none focus:bg-white"
@@ -83,7 +79,7 @@ export function ContactForm() {
       {error && <p className="text-red-300 text-sm">{error}</p>}
       <div>
         <Button type="submit" variant="foreground" size="sm" disabled={pending}>
-          {pending ? "Envoi…" : "Envoyer"}
+          {pending ? t("submitting") : t("submit")}
         </Button>
       </div>
     </form>

@@ -1,0 +1,2450 @@
+=== src/api/home/content-types/home/schema.json ===
+{
+	"kind": "singleType",
+	"collectionName": "homes",
+	"info": {
+		"singularName": "home",
+		"pluralName": "homes",
+		"displayName": "Home"
+	},
+	"options": {
+		"draftAndPublish": true
+	},
+	"pluginOptions": {
+		"i18n": {
+			"localized": true
+		}
+	},
+	"attributes": {
+		"siteName": {
+			"type": "string"
+		},
+		"seo": {
+			"type": "component",
+			"pluginOptions": {
+				"i18n": {
+					"localized": true
+				}
+			},
+			"component": "shared.seo",
+			"repeatable": false
+		},
+		"hero": {
+			"type": "component",
+			"pluginOptions": {
+				"i18n": {
+					"localized": true
+				}
+			},
+			"component": "home.hero",
+			"repeatable": false
+		},
+		"expertises": {
+			"type": "component",
+			"pluginOptions": {
+				"i18n": {
+					"localized": true
+				}
+			},
+			"component": "home.expertises-section",
+			"repeatable": false
+		},
+		"fullWidthImage": {
+			"type": "media",
+			"pluginOptions": {
+				"i18n": {
+					"localized": false
+				}
+			},
+			"multiple": false,
+			"allowedTypes": ["images"]
+		},
+		"quoteSection": {
+			"type": "component",
+			"pluginOptions": {
+				"i18n": {
+					"localized": true
+				}
+			},
+			"component": "home.quote-section",
+			"repeatable": false
+		},
+		"convictions": {
+			"type": "component",
+			"pluginOptions": {
+				"i18n": {
+					"localized": true
+				}
+			},
+			"component": "home.convictions-section",
+			"repeatable": false
+		},
+		"solutions": {
+			"type": "component",
+			"pluginOptions": {
+				"i18n": {
+					"localized": true
+				}
+			},
+			"component": "home.solutions-section",
+			"repeatable": false
+		},
+		"testimonials": {
+			"type": "component",
+			"pluginOptions": {
+				"i18n": {
+					"localized": true
+				}
+			},
+			"component": "home.testimonials-section",
+			"repeatable": false
+		},
+		"logos": {
+			"type": "component",
+			"pluginOptions": {
+				"i18n": {
+					"localized": true
+				}
+			},
+			"component": "home.logos-section",
+			"repeatable": false
+		}
+	}
+}
+=== src/api/page/content-types/page/schema.json ===
+{
+  "kind": "collectionType",
+  "collectionName": "pages",
+  "info": {
+    "singularName": "page",
+    "pluralName": "pages",
+    "displayName": "Page"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": { "localized": true }
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title",
+      "required": true,
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.seo",
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "blocks": {
+      "type": "dynamiczone",
+      "components": [
+        "blocks.text-block",
+        "blocks.image-block",
+        "blocks.hero",
+        "blocks.cta",
+        "blocks.accordion",
+        "blocks.cards"
+      ],
+      "pluginOptions": { "i18n": { "localized": true } }
+    }
+  }
+}
+=== src/api/contact/content-types/contact/schema.json ===
+{
+  "kind": "singleType",
+  "collectionName": "contacts",
+  "info": {
+    "singularName": "contact",
+    "pluralName": "contacts",
+    "displayName": "Contact"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "seo": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "shared.seo",
+      "repeatable": false
+    },
+    "hero": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "shared.page-hero",
+      "repeatable": false
+    },
+    "adress": {
+      "type": "text",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "mail": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "phone": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "team_members": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::team-member.team-member"
+    }
+  }
+}
+=== src/api/case-tag/content-types/case-tag/schema.json ===
+{
+  "kind": "collectionType",
+  "collectionName": "case_tags",
+  "info": {
+    "singularName": "case-tag",
+    "pluralName": "case-tags",
+    "displayName": "Tags Cas clients"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "label": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "required": true
+    },
+    "client_cases": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::client-case.client-case",
+      "mappedBy": "tags"
+    }
+  }
+}
+=== src/api/solution/content-types/solution/schema.json ===
+{
+  "kind": "singleType",
+  "collectionName": "solutions",
+  "info": {
+    "singularName": "solution",
+    "pluralName": "solutions",
+    "displayName": "Solutions"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "hero": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "shared.page-hero",
+      "repeatable": false
+    },
+    "intro_image": {
+      "type": "media",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "draw_scan_intro": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "solutions.solution-intro",
+      "repeatable": false
+    },
+    "draw_scan_how": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "solutions.how-it-works-split",
+      "repeatable": false
+    },
+    "atelier_align_intro": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "solutions.solution-intro",
+      "repeatable": false
+    },
+    "atelier_align_how": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "solutions.how-it-works-steps",
+      "repeatable": false
+    },
+    "atelier_align_result": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "solutions.result-section",
+      "repeatable": false
+    },
+    "gallery_images": {
+      "type": "media",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "multiple": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "offers_header": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "shared.section-header",
+      "repeatable": false
+    },
+    "pricing_offers": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "solutions.pricing-card",
+      "repeatable": true
+    },
+    "pricing_combos": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "solutions.pricing-card",
+      "repeatable": true
+    },
+    "seo": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "shared.seo",
+      "repeatable": false
+    }
+  }
+}
+=== src/api/ressource/content-types/ressource/schema.json ===
+{
+  "kind": "singleType",
+  "collectionName": "ressources",
+  "info": {
+    "singularName": "ressource",
+    "pluralName": "ressources",
+    "displayName": "Ressources"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "hero": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "shared.page-hero",
+      "repeatable": false
+    },
+    "seo": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "shared.seo",
+      "repeatable": false
+    }
+  }
+}
+=== src/api/client-case/content-types/client-case/schema.json ===
+{
+  "kind": "collectionType",
+  "collectionName": "client_cases",
+  "info": {
+    "singularName": "client-case",
+    "pluralName": "client-cases",
+    "displayName": "Cas clients"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "required": true
+    },
+    "short_title": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "background": {
+      "type": "enumeration",
+      "required": true,
+      "default": "primary",
+      "enum": [
+        "primary",
+        "secondary"
+      ]
+    },
+    "features": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "elements.list-item",
+      "repeatable": true
+    },
+    "objectives": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "elements.list-item",
+      "repeatable": true
+    },
+    "tags": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::case-tag.case-tag",
+      "inversedBy": "client_cases"
+    },
+    "context_text": {
+      "type": "text",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "context_items": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "elements.list-item",
+      "repeatable": true
+    },
+    "problem_text": {
+      "type": "text",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "problem_consequence": {
+      "type": "text",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "solution_cycle_name": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "solution_steps": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "expertises.solution-step",
+      "repeatable": true
+    },
+    "results_metrics": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "elements.metric-item",
+      "repeatable": true
+    },
+    "results_benefit": {
+      "type": "text",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "results_feedback": {
+      "type": "text",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "expertises": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::expertise.expertise",
+      "mappedBy": "client_cases"
+    },
+    "roi": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    }
+  }
+}
+=== src/api/team-member/content-types/team-member/schema.json ===
+{
+  "kind": "collectionType",
+  "collectionName": "team_members",
+  "info": {
+    "singularName": "team-member",
+    "pluralName": "team-members",
+    "displayName": "Team members"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "image": {
+      "type": "media",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "name": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "function": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "text": {
+      "type": "text",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "cta": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "elements.cta-link",
+      "repeatable": false
+    }
+  }
+}
+=== src/api/partenaire/content-types/partenaire/schema.json ===
+{
+  "kind": "singleType",
+  "collectionName": "partenaires",
+  "info": {
+    "singularName": "partenaire",
+    "pluralName": "partenaires",
+    "displayName": "Partenaires"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "seo": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "shared.seo",
+      "repeatable": false
+    },
+    "hero": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "shared.page-hero",
+      "repeatable": false
+    },
+    "fullWidthImage": {
+      "type": "media",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "three_col_cards": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "home.expertises-section",
+      "repeatable": false
+    },
+    "partenaireTitle": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "shared.section-header",
+      "repeatable": false
+    },
+    "features": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "shared.split-section",
+      "repeatable": false
+    },
+    "fullWidthImage2": {
+      "type": "media",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "quote_text": {
+      "type": "text",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "quote_author": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "quote_function": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    }
+  }
+}
+=== src/api/methode-hldb/content-types/methode-hldb/schema.json ===
+{
+  "kind": "singleType",
+  "collectionName": "methode_hldbs",
+  "info": {
+    "singularName": "methode-hldb",
+    "pluralName": "methode-hldbs",
+    "displayName": "Méthode HLDB"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "seo": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "shared.seo",
+      "repeatable": false
+    },
+    "hero": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "shared.page-hero",
+      "repeatable": false
+    },
+    "logo_hldb": {
+      "type": "media",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "diagram_left": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "methode.diagram-card",
+      "repeatable": false
+    },
+    "diagram_right": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "methode.diagram-card",
+      "repeatable": false
+    },
+    "principles_title": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "principles_items": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "home.conviction-item",
+      "repeatable": true
+    },
+    "theoretical_title": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "theoretical_items": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "home.conviction-item",
+      "repeatable": true
+    },
+    "section3_cta": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "elements.cta-link",
+      "repeatable": false
+    },
+    "fullWidthImage": {
+      "type": "media",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "maturity_title": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "maturity_text": {
+      "type": "text",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "highlight_title": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "highlight_text": {
+      "type": "text",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "maturity_image": {
+      "type": "media",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    }
+  }
+}
+=== src/api/article/content-types/article/schema.json ===
+{
+  "kind": "collectionType",
+  "collectionName": "articles",
+  "info": {
+    "singularName": "article",
+    "pluralName": "articles",
+    "displayName": "Article"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title"
+    },
+    "coverImage": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "content": {
+      "type": "dynamiczone",
+      "components": [
+        "blocks.video-embed",
+        "blocks.text-block",
+        "blocks.image-block",
+        "blocks.hero",
+        "blocks.gallery",
+        "blocks.cta",
+        "blocks.accordion"
+      ]
+    }
+  }
+}
+=== src/api/expertise/content-types/expertise/schema.json ===
+{
+  "kind": "singleType",
+  "collectionName": "expertises",
+  "info": {
+    "singularName": "expertise",
+    "pluralName": "expertises",
+    "displayName": "Expertises"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "seo": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "shared.seo",
+      "repeatable": false
+    },
+    "hero": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "shared.page-hero",
+      "repeatable": false
+    },
+    "three_col_cards": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "home.expertises-section",
+      "repeatable": false
+    },
+    "fullWidthImage": {
+      "type": "media",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "cards_group": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "shared.split-section",
+      "repeatable": true
+    },
+    "client_cases": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::client-case.client-case",
+      "inversedBy": "expertises"
+    },
+    "fullWidthImage2": {
+      "type": "media",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    },
+    "client_case_header": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "shared.section-header",
+      "repeatable": false
+    }
+  }
+}
+=== src/api/global/content-types/global/schema.json ===
+{
+  "kind": "singleType",
+  "collectionName": "globals",
+  "info": {
+    "singularName": "global",
+    "pluralName": "globals",
+    "displayName": "Global"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "siteName": {
+      "type": "string"
+    },
+    "navVariant": {
+      "type": "enumeration",
+      "default": "header",
+      "enum": [
+        "header",
+        "sidebar"
+      ]
+    },
+    "seo": {
+      "type": "component",
+      "component": "shared.seo",
+      "repeatable": false
+    },
+    "navItems": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "elements.nav-item",
+      "repeatable": true
+    },
+    "ctaBanner": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "shared.cta-banner",
+      "repeatable": false
+    },
+    "footer": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "shared.footer",
+      "repeatable": false
+    },
+    "teamPhoto": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "logo": {
+      "type": "media",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    },
+    "square_logo_icon": {
+      "type": "media",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    }
+  }
+}
+=== src/components/blocks/video-embed.json ===
+{
+  "collectionName": "components_blocks_video_embeds",
+  "info": {
+    "displayName": "VideoEmbed"
+  },
+  "options": {},
+  "attributes": {
+    "videoUrl": {
+      "type": "string"
+    },
+    "provider": {
+      "type": "enumeration",
+      "enum": [
+        "YouTube",
+        "vimeo"
+      ]
+    },
+    "title": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}
+=== src/components/blocks/cards.json ===
+{
+  "collectionName": "components_blocks_cards",
+  "info": {
+    "displayName": "Cards"
+  },
+  "options": {},
+  "attributes": {
+    "items": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.card-item"
+    }
+  },
+  "config": {}
+}
+=== src/components/blocks/gallery.json ===
+{
+  "collectionName": "components_blocks_galleries",
+  "info": {
+    "displayName": "Gallery"
+  },
+  "options": {},
+  "attributes": {
+    "images": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "layout": {
+      "type": "enumeration",
+      "enum": [
+        "grid",
+        "masonry",
+        "carousel"
+      ]
+    },
+    "title": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}
+=== src/components/blocks/image-block.json ===
+{
+  "collectionName": "components_blocks_image_blocks",
+  "info": {
+    "displayName": "ImageBlock"
+  },
+  "options": {},
+  "attributes": {
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "caption": {
+      "type": "text"
+    },
+    "full_width": {
+      "type": "boolean",
+      "default": true
+    }
+  },
+  "config": {}
+}
+=== src/components/blocks/cta.json ===
+{
+  "collectionName": "components_blocks_ctas",
+  "info": {
+    "displayName": "CTA"
+  },
+  "options": {},
+  "attributes": {
+    "buttonText": {
+      "type": "string"
+    },
+    "buttonLink": {
+      "type": "string"
+    },
+    "variant": {
+      "type": "enumeration",
+      "enum": [
+        "primary",
+        "secondary",
+        "outline",
+        "ghost"
+      ]
+    }
+  },
+  "config": {}
+}
+=== src/components/blocks/accordion.json ===
+{
+  "collectionName": "components_blocks_accordions",
+  "info": {
+    "displayName": "Accordion"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "items": {
+      "type": "component",
+      "component": "elements.accordion-item",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}
+=== src/components/blocks/text-block.json ===
+{
+  "collectionName": "components_blocks_text_blocks",
+  "info": {
+    "displayName": "TextBlock"
+  },
+  "options": {},
+  "attributes": {
+    "content": {
+      "type": "blocks"
+    }
+  },
+  "config": {}
+}
+=== src/components/blocks/hero.json ===
+{
+  "collectionName": "components_blocks_heroes",
+  "info": {
+    "displayName": "Hero"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "subtitle": {
+      "type": "string"
+    },
+    "backgroundImage": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "variant": {
+      "type": "enumeration",
+      "enum": [
+        "default",
+        "centered",
+        "fullscreen"
+      ]
+    }
+  },
+  "config": {}
+}
+=== src/components/home/testimonial-item.json ===
+{
+  "collectionName": "components_home_testimonial_items",
+  "info": {
+    "displayName": "Testimonial Item"
+  },
+  "options": {},
+  "attributes": {
+    "quote": {
+      "type": "text",
+      "required": true
+    },
+    "author": {
+      "type": "string",
+      "required": true
+    },
+    "role": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}
+=== src/components/home/quote-section.json ===
+{
+  "collectionName": "components_home_quote_sections",
+  "info": {
+    "displayName": "Quote Section"
+  },
+  "options": {},
+  "attributes": {
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": ["images"]
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "text": {
+      "type": "text"
+    },
+    "cta": {
+      "type": "component",
+      "component": "elements.cta-link",
+      "repeatable": false
+    }
+  }
+}
+=== src/components/home/solution-card.json ===
+{
+  "collectionName": "components_home_solution_cards",
+  "info": {
+    "displayName": "Solution Card"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "logo": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "background": {
+      "type": "enumeration",
+      "default": "primary",
+      "enum": [
+        "primary",
+        "secondary"
+      ]
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "features": {
+      "type": "component",
+      "component": "elements.list-item",
+      "repeatable": true
+    }
+  }
+}
+=== src/components/home/hero-bubble.json ===
+{
+  "collectionName": "components_home_hero_bubbles",
+  "info": {
+    "displayName": "Hero Bubble"
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "string",
+      "required": true
+    }
+  }
+}
+=== src/components/home/conviction-item.json ===
+{
+  "collectionName": "components_home_conviction_items",
+  "info": {
+    "displayName": "Conviction Item",
+    "icon": "check",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "text": {
+      "type": "text"
+    }
+  }
+}
+=== src/components/home/solutions-section.json ===
+{
+  "collectionName": "components_home_solutions_sections",
+  "info": {
+    "displayName": "Solutions Section"
+  },
+  "options": {},
+  "attributes": {
+    "eyebrow": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "items": {
+      "type": "component",
+      "component": "home.solution-card",
+      "repeatable": true
+    },
+    "button": {
+      "type": "component",
+      "component": "elements.cta-link",
+      "repeatable": false
+    }
+  },
+  "config": {}
+}
+=== src/components/home/convictions-section.json ===
+{
+  "collectionName": "components_home_convictions_sections",
+  "info": {
+    "displayName": "Convictions Section",
+    "icon": "bulletList",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "eyebrow": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "items": {
+      "type": "component",
+      "component": "home.conviction-item",
+      "repeatable": true
+    }
+  }
+}
+=== src/components/home/testimonials-section.json ===
+{
+  "collectionName": "components_home_testimonials_sections",
+  "info": {
+    "displayName": "Testimonials Section"
+  },
+  "options": {},
+  "attributes": {
+    "eyebrow": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "items": {
+      "type": "component",
+      "component": "home.testimonial-item",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}
+=== src/components/home/logos-section.json ===
+{
+  "collectionName": "components_home_logos_sections",
+  "info": {
+    "displayName": "Logos Section"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "logos": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": ["images"]
+    }
+  },
+  "config": {}
+}
+=== src/components/home/expertises-section.json ===
+{
+  "collectionName": "components_home_expertises_sections",
+  "info": {
+    "displayName": "Expertises Section"
+  },
+  "options": {},
+  "attributes": {
+    "items": {
+      "type": "component",
+      "component": "home.expertise-item",
+      "repeatable": true
+    },
+    "cta": {
+      "type": "component",
+      "component": "elements.cta-link",
+      "repeatable": false
+    }
+  }
+}
+=== src/components/home/cta-final.json ===
+{
+  "collectionName": "components_home_cta_finals",
+  "info": {
+    "displayName": "CTA Final"
+  },
+  "options": {},
+  "attributes": {
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": ["images"]
+    },
+    "title": {
+      "type": "string"
+    },
+    "cta": {
+      "type": "component",
+      "component": "elements.cta-link",
+      "repeatable": false
+    }
+  }
+}
+=== src/components/home/expertise-item.json ===
+{
+  "collectionName": "components_home_expertise_items",
+  "info": {
+    "displayName": "Expertise Item"
+  },
+  "options": {},
+  "attributes": {
+    "icon": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": ["images"]
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "subtitle": {
+      "type": "string"
+    },
+    "text": {
+      "type": "text"
+    }
+  }
+}
+=== src/components/home/hero.json ===
+{
+  "collectionName": "components_home_heroes",
+  "info": {
+    "displayName": "Home Hero"
+  },
+  "options": {},
+  "attributes": {
+    "eyebrow": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "text": {
+      "type": "blocks"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "bubbles": {
+      "type": "component",
+      "component": "home.hero-bubble",
+      "repeatable": true
+    }
+  }
+}
+=== src/components/solutions/how-it-works-steps.json ===
+{
+  "collectionName": "components_solutions_how_it_works_steps",
+  "info": {
+    "displayName": "How It Works Steps"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "steps": {
+      "type": "component",
+      "component": "solutions.step",
+      "repeatable": true
+    }
+  }
+}
+=== src/components/solutions/step.json ===
+{
+  "collectionName": "components_solutions_steps",
+  "info": {
+    "displayName": "Step"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "items": {
+      "type": "component",
+      "component": "elements.list-item",
+      "repeatable": true
+    }
+  }
+}
+=== src/components/solutions/how-it-works-split.json ===
+{
+  "collectionName": "components_solutions_how_it_works_splits",
+  "info": {
+    "displayName": "How It Works Split"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "card_title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "blocks"
+    },
+    "card_items": {
+      "type": "component",
+      "component": "elements.list-item",
+      "repeatable": true
+    },
+    "features": {
+      "type": "component",
+      "component": "elements.list-item",
+      "repeatable": true
+    }
+  }
+}
+=== src/components/solutions/result-section.json ===
+{
+  "collectionName": "components_solutions_result_sections",
+  "info": {
+    "displayName": "Result Section"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "items": {
+      "type": "component",
+      "component": "solutions.result-item",
+      "repeatable": true
+    }
+  }
+}
+=== src/components/solutions/pricing-card.json ===
+{
+  "collectionName": "components_solutions_pricing_cards",
+  "info": {
+    "displayName": "Pricing Card"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text"
+    },
+    "features": {
+      "type": "component",
+      "component": "elements.list-item",
+      "repeatable": true
+    },
+    "cta": {
+      "type": "component",
+      "component": "elements.cta-link",
+      "repeatable": false
+    },
+    "background": {
+      "type": "enumeration",
+      "enum": [
+        "primary",
+        "secondary",
+        "accent-peach"
+      ]
+    },
+    "price": {
+      "type": "string"
+    },
+    "logo": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "logo_right": {
+      "type": "boolean",
+      "default": false
+    },
+    "subtitle": {
+      "type": "string"
+    }
+  }
+}
+=== src/components/solutions/solution-intro.json ===
+{
+  "collectionName": "components_solutions_solution_intros",
+  "info": {
+    "displayName": "Solution Intro"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "logo": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "background": {
+      "type": "enumeration",
+      "default": "primary",
+      "enum": [
+        "primary",
+        "secondary"
+      ]
+    },
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "illustration": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    }
+  }
+}
+=== src/components/solutions/result-item.json ===
+{
+  "collectionName": "components_solutions_result_items",
+  "info": {
+    "displayName": "Result Item"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "text": {
+      "type": "text"
+    }
+  }
+}
+=== src/components/shared/split-section.json ===
+{
+  "collectionName": "components_shared_split_sections",
+  "info": {
+    "displayName": "split section"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+
+    "background": {
+      "type": "enumeration",
+      "default": "primary",
+      "enum": ["primary", "secondary"]
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": ["images"]
+    },
+    "features": {
+      "type": "component",
+      "component": "elements.list-item",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}
+=== src/components/shared/footer.json ===
+{
+  "collectionName": "components_shared_footers",
+  "info": {
+    "displayName": "Footer",
+    "icon": "layout-bottom"
+  },
+  "options": {},
+  "attributes": {
+    "tagline": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "address": {
+      "type": "text"
+    },
+    "logo": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "socialLinks": {
+      "type": "component",
+      "component": "elements.social-link",
+      "repeatable": true
+    },
+    "legalLinks": {
+      "type": "component",
+      "component": "elements.nav-item",
+      "repeatable": true
+    },
+    "logo_esf": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    }
+  }
+}
+=== src/components/shared/bloc-2-3-1-3.json ===
+{
+  "collectionName": "components_shared_bloc_2_3_1_3s",
+  "info": {
+    "displayName": "bloc-2/3-1/3"
+  },
+  "options": {},
+  "attributes": {
+    "logo": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "title": {
+      "type": "string"
+    },
+    "text": {
+      "type": "string"
+    },
+    "illustration": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    }
+  },
+  "config": {}
+}
+=== src/components/shared/bullet-list.json ===
+{
+  "collectionName": "components_shared_bullet_lists",
+  "info": {
+    "displayName": "BulletList"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "item": {
+      "type": "component",
+      "component": "elements.list-item",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}
+=== src/components/shared/section-header.json ===
+{
+  "collectionName": "components_shared_section_headers",
+  "info": {
+    "displayName": "Section Header",
+    "icon": "heading",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "eyebrow": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    }
+  }
+}
+=== src/components/shared/seo.json ===
+{
+  "collectionName": "components_shared_seos",
+  "info": {
+    "displayName": "Seo",
+    "icon": "search"
+  },
+  "options": {},
+  "attributes": {
+    "metaTitle": {
+      "type": "string"
+    },
+    "metaDescription": {
+      "type": "text"
+    },
+    "ogImage": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": ["images"]
+    }
+  }
+}
+=== src/components/shared/page-hero.json ===
+{
+  "collectionName": "components_shared_page_heroes",
+  "info": {
+    "displayName": "Page hero"
+  },
+  "options": {},
+  "attributes": {
+    "eyebrow": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "text": {
+      "type": "text"
+    }
+  },
+  "config": {}
+}
+=== src/components/shared/cta-banner.json ===
+{
+  "collectionName": "components_shared_cta_banners",
+  "info": {
+    "displayName": "CtaBanner"
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "string"
+    },
+    "cta": {
+      "type": "component",
+      "component": "blocks.cta",
+      "repeatable": false
+    }
+  },
+  "config": {}
+}
+=== src/components/elements/accordion-item.json ===
+{
+  "collectionName": "components_elements_accordion_items",
+  "info": {
+    "displayName": "AccordionItem"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "content": {
+      "type": "blocks"
+    }
+  },
+  "config": {}
+}
+=== src/components/elements/metric-item.json ===
+{
+  "collectionName": "components_elements_metric_items",
+  "info": {
+    "displayName": "Metric Item",
+    "icon": "chartLine"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string",
+      "required": true
+    },
+    "before": {
+      "type": "string"
+    },
+    "after": {
+      "type": "string",
+      "required": true
+    }
+  }
+}
+=== src/components/elements/list-item.json ===
+{
+  "collectionName": "components_elements_list_items",
+  "info": {
+    "displayName": "List Item",
+    "icon": "bulletList",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "text",
+      "required": true
+    }
+  }
+}
+=== src/components/elements/cta-link.json ===
+{
+  "collectionName": "components_elements_cta_links",
+  "info": {
+    "displayName": "CTA Link",
+    "icon": "link",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string",
+      "required": true
+    },
+    "href": {
+      "type": "string",
+      "required": true
+    }
+  }
+}
+=== src/components/elements/nav-item.json ===
+{
+  "collectionName": "components_elements_nav_items",
+  "info": {
+    "displayName": "Nav Item",
+    "icon": "link"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string",
+      "required": true
+    },
+    "href": {
+      "type": "string",
+      "required": true
+    }
+  }
+}
+=== src/components/elements/social-link.json ===
+{
+  "collectionName": "components_elements_social_links",
+  "info": {
+    "displayName": "Social Link",
+    "icon": "earth"
+  },
+  "options": {},
+  "attributes": {
+    "platform": {
+      "type": "enumeration",
+      "enum": ["twitter", "linkedin", "github", "instagram", "facebook", "youtube"],
+      "required": true
+    },
+    "url": {
+      "type": "string",
+      "required": true
+    }
+  }
+}
+=== src/components/elements/card-item.json ===
+{
+  "collectionName": "components_elements_card_items",
+  "info": {
+    "displayName": "CardItem"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": ["images"]
+    },
+    "linkLabel": {
+      "type": "string"
+    },
+    "linkHref": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}
+=== src/components/methode/diagram-card.json ===
+{
+  "collectionName": "components_methode_diagram_cards",
+  "info": {
+    "displayName": "Diagram Card",
+    "icon": "layout"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "subtitle": {
+      "type": "string"
+    },
+    "text": {
+      "type": "text"
+    },
+    "background": {
+      "type": "enumeration",
+      "enum": ["primary", "secondary"],
+      "default": "primary"
+    }
+  }
+}
+=== src/components/expertises/solution-step.json ===
+{
+  "collectionName": "components_expertises_solution_steps",
+  "info": {
+    "displayName": "Solution Step",
+    "icon": "bulletList"
+  },
+  "options": {},
+  "attributes": {
+    "badge_label": {
+      "type": "string",
+      "required": true
+    },
+    "badge_variant": {
+      "type": "enumeration",
+      "default": "primary",
+      "enum": [
+        "primary",
+        "secondary",
+        "accent"
+      ]
+    },
+    "title": {
+      "type": "string"
+    },
+    "items": {
+      "type": "component",
+      "component": "elements.list-item",
+      "repeatable": true
+    },
+    "revelation": {
+      "type": "text",
+      "conditions": {
+        "visible": {
+          "!=": [
+            {
+              "var": "show_revelation"
+            },
+            false
+          ]
+        }
+      }
+    },
+    "show_revelation": {
+      "type": "boolean"
+    }
+  }
+}
+=== src/components/expertises/client-case-list.json ===
+{
+  "collectionName": "components_expertises_client_case_lists",
+  "info": {
+    "displayName": "Client Case List",
+    "icon": "grid",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "background": {
+      "type": "enumeration",
+      "enum": ["primary", "secondary"],
+      "default": "primary"
+    },
+    "features": {
+      "type": "component",
+      "component": "elements.list-item",
+      "repeatable": true
+    },
+    "cta": {
+      "type": "component",
+      "component": "elements.cta-link",
+      "repeatable": false
+    },
+    "objectives": {
+      "type": "component",
+      "component": "elements.list-item",
+      "repeatable": true
+    },
+    "tags": {
+      "type": "component",
+      "component": "elements.list-item",
+      "repeatable": true
+    }
+  }
+}
+=== src/components/expertises/client-case-detail.json ===
+{
+  "collectionName": "components_expertises_client_case_details",
+  "info": {
+    "displayName": "Client Case Detail",
+    "icon": "file"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "context_text": {
+      "type": "text"
+    },
+    "context_items": {
+      "type": "component",
+      "component": "elements.list-item",
+      "repeatable": true
+    },
+    "problem_text": {
+      "type": "text"
+    },
+    "problem_consequence": {
+      "type": "text"
+    },
+    "solution_cycle_name": {
+      "type": "string"
+    },
+    "solution_steps": {
+      "type": "component",
+      "component": "expertises.solution-step",
+      "repeatable": true
+    },
+    "results_metrics": {
+      "type": "component",
+      "component": "elements.list-item",
+      "repeatable": true
+    },
+    "results_benefit": {
+      "type": "text"
+    },
+    "results_feedback": {
+      "type": "text"
+    }
+  }
+}
