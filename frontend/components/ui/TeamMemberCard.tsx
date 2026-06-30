@@ -12,8 +12,12 @@ export function TeamMemberCard({
   return (
     <div className="grid grid-cols-1 overflow-hidden rounded-2xl bg-accent-peach p-5 md:grid-cols-[280px_1fr] lg:p-20">
       {image && (
-        <div className="relative min-h-64 overflow-hidden rounded-2xl">
-          <StrapiImage image={image} fill className="object-cover" />
+        <div className="relative aspect-4/5 w-full self-start overflow-hidden rounded-2xl">
+          <StrapiImage
+            image={image}
+            className="h-full w-full object-cover"
+            sizes="(min-width: 768px) 280px, 100vw"
+          />
         </div>
       )}
       <div className="flex flex-col gap-6 p-8 lg:p-10">
