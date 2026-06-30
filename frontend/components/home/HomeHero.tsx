@@ -60,7 +60,7 @@ type BubblePosition = { top: string; left: string };
 
 const BUBBLE_POSITIONS: BubblePosition[] = [
   { top: "15%", left: "48%" }, // bulle 0 : haut droite
-  { top: "53%", left: "5%" }, // bulle 1 : milieu gauche
+  { top: "43%", left: "6%" }, // bulle 1 : milieu gauche
   { top: "87%", left: "32%" }, // bulle 2 : bas centre
 ];
 
