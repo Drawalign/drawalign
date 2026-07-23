@@ -7,6 +7,7 @@ import { notFound } from "next/navigation";
 import { BlockRenderer } from "@/components/BlockRenderer";
 import { PreviewBanner } from "@/components/layout/PreviewBanner";
 import { PageHero } from "@/components/ui/PageHero";
+import { type Locale, resolveLocalizedPathname } from "@/lib/i18n-paths";
 import { buildPageMetadata } from "@/lib/metadata";
 import { getArticleBySlug, getGlobal } from "@/lib/strapi";
 import type { LocaleSlugPageProps } from "@/type";
@@ -24,7 +25,8 @@ export async function generateMetadata({ params }: LocaleSlugPageProps): Promise
 	if (!article) return {};
 
 	const pageSeo = { metaTitle: article.title, metaDescription: null, ogImage: article.coverImage };
-	return buildPageMetadata(pageSeo, global?.seo);
+	const pathname = `${resolveLocalizedPathname("/ressources", locale as Locale)}/${slug}`;
+	return buildPageMetadata(pageSeo, global?.seo, { pathname, locale: locale as Locale });
 }
 
 export default async function ArticlePage({ params }: LocaleSlugPageProps) {

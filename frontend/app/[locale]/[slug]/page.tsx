@@ -6,6 +6,7 @@ export const dynamic = "force-dynamic";
 import { notFound } from "next/navigation";
 import { BlockRenderer } from "@/components/BlockRenderer";
 import { PreviewBanner } from "@/components/layout/PreviewBanner";
+import { type Locale, localePrefix } from "@/lib/i18n-paths";
 import { buildPageMetadata } from "@/lib/metadata";
 import { getGlobal, getPageBySlug } from "@/lib/strapi";
 import type { LocaleSlugPageProps } from "@/type";
@@ -21,7 +22,8 @@ export async function generateMetadata({ params }: LocaleSlugPageProps): Promise
 	if (!page) return {};
 
 	const pageSeo = page.seo ?? { metaTitle: page.title, metaDescription: null, ogImage: null };
-	return buildPageMetadata(pageSeo, global?.seo);
+	const pathname = `${localePrefix(locale as Locale)}/${slug}`;
+	return buildPageMetadata(pageSeo, global?.seo, { pathname, locale: locale as Locale });
 }
 
 export default async function PageBySlug({ params }: LocaleSlugPageProps) {

@@ -1,16 +1,15 @@
 import type { MetadataRoute } from "next";
+import { routing } from "@/i18n/routing";
+import {
+	absoluteSiteUrl,
+	localePrefix,
+	type PathnameKey,
+	resolveLocalizedPathname,
+} from "@/lib/i18n-paths";
 import { getAllPages, getArticles } from "@/lib/strapi";
 import type { ArticleCard, Page } from "@/type";
 
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
-const LOCALES = ["fr", "en"] as const;
-
-function localizedUrl(path: string, locale: (typeof LOCALES)[number]): string {
-	const prefix = locale === "fr" ? "" : "/en";
-	return `${BASE_URL}${prefix}${path}`;
-}
-
-const STATIC_ROUTES = [
+const STATIC_ROUTES: PathnameKey[] = [
 	"/",
 	"/expertises",
 	"/methode-hldb",
@@ -23,11 +22,11 @@ const STATIC_ROUTES = [
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 	const entries: MetadataRoute.Sitemap = [];
 
-	// Static routes — both locales
-	for (const locale of LOCALES) {
+	// Static routes — both locales, using each locale's translated slug
+	for (const locale of routing.locales) {
 		for (const route of STATIC_ROUTES) {
 			entries.push({
-				url: localizedUrl(route, locale),
+				url: absoluteSiteUrl(resolveLocalizedPathname(route, locale)),
 				changeFrequency: "weekly",
 				priority: route === "/" ? 1.0 : 0.8,
 			});
@@ -35,7 +34,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 	}
 
 	// Dynamic pages (page builder) — both locales
-	for (const locale of LOCALES) {
+	for (const locale of routing.locales) {
 		let pages: Page[] = [];
 		try {
 			pages = await getAllPages(locale);
@@ -44,7 +43,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 		}
 		for (const page of pages) {
 			entries.push({
-				url: localizedUrl(`/${page.slug}`, locale),
+				url: absoluteSiteUrl(`${localePrefix(locale)}/${page.slug}`),
 				lastModified: page.updatedAt,
 				changeFrequency: "weekly",
 				priority: 0.7,
@@ -52,17 +51,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 		}
 	}
 
-	// Articles — both locales
-	for (const locale of LOCALES) {
+	// Articles — both locales, under the locale's translated "ressources" base path
+	for (const locale of routing.locales) {
 		let articles: ArticleCard[] = [];
 		try {
 			articles = await getArticles(locale);
 		} catch {
 			// Strapi unavailable during build
 		}
+		const ressourcesBase = resolveLocalizedPathname("/ressources", locale);
 		for (const article of articles) {
 			entries.push({
-				url: localizedUrl(`/ressources/${article.slug}`, locale),
+				url: absoluteSiteUrl(`${ressourcesBase}/${article.slug}`),
 				changeFrequency: "monthly",
 				priority: 0.6,
 			});

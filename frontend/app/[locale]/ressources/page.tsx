@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { ArticleListBlock } from "@/components/blocks/ArticleListBlock";
 import { PageHero } from "@/components/ui/PageHero";
+import type { Locale } from "@/lib/i18n-paths";
 import { buildPageMetadata } from "@/lib/metadata";
 import { getGlobal, getRessourcesPage } from "@/lib/strapi";
 import type { LocalePageProps } from "@/type";
@@ -8,7 +9,10 @@ import type { LocalePageProps } from "@/type";
 export async function generateMetadata({ params }: LocalePageProps): Promise<Metadata> {
 	const { locale } = await params;
 	const [page, global] = await Promise.all([getRessourcesPage(locale), getGlobal(locale)]);
-	return buildPageMetadata(page?.seo, global?.seo);
+	return buildPageMetadata(page?.seo, global?.seo, {
+		route: "/ressources",
+		locale: locale as Locale,
+	});
 }
 
 export default async function RessourcesPage({ params }: LocalePageProps) {

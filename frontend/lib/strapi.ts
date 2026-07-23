@@ -288,7 +288,7 @@ export async function getPartenairesPage(locale = "fr"): Promise<PartenairesPage
 	}
 }
 
-export async function getRessourcesPage(locale = "fr"): Promise<RessourcesPage | null> {
+export async function getRessourcesPage(locale = "fr"): (Promise<RessourcesPage | null>) {
 	try {
 		const query = qs.stringify(
 			{

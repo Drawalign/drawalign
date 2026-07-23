@@ -3,6 +3,7 @@ import { MethodeMaturity } from "@/components/methode/MethodeMaturity";
 import { MethodePrincipes } from "@/components/methode/MethodePrincipes";
 import { FullWidthImage } from "@/components/ui/FullWidthImage";
 import { PageHero } from "@/components/ui/PageHero";
+import type { Locale } from "@/lib/i18n-paths";
 import { buildPageMetadata } from "@/lib/metadata";
 import { getGlobal, getMethodeHldbPage } from "@/lib/strapi";
 import type { LocalePageProps } from "@/type";
@@ -11,7 +12,10 @@ export async function generateMetadata({ params }: LocalePageProps): Promise<Met
 	const { locale } = await params;
 	const [page, global] = await Promise.all([getMethodeHldbPage(locale), getGlobal(locale)]);
 
-	return buildPageMetadata(page?.seo, global?.seo);
+	return buildPageMetadata(page?.seo, global?.seo, {
+		route: "/methode-hldb",
+		locale: locale as Locale,
+	});
 }
 
 export default async function MethodeHldbPage({ params }: LocalePageProps) {

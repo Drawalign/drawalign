@@ -6,6 +6,7 @@ import { PageHero } from "@/components/ui/PageHero";
 import { Section } from "@/components/ui/Section";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { ThreeColCards } from "@/components/ui/ThreeColCards";
+import type { Locale } from "@/lib/i18n-paths";
 import { buildPageMetadata } from "@/lib/metadata";
 import { getExpertisePage, getGlobal } from "@/lib/strapi";
 import type { LocalePageProps } from "@/type";
@@ -14,7 +15,10 @@ export async function generateMetadata({ params }: LocalePageProps): Promise<Met
 	const { locale } = await params;
 	const [page, global] = await Promise.all([getExpertisePage(locale), getGlobal(locale)]);
 
-	return buildPageMetadata(page?.seo, global?.seo);
+	return buildPageMetadata(page?.seo, global?.seo, {
+		route: "/expertises",
+		locale: locale as Locale,
+	});
 }
 
 export default async function ExpertisesPage({ params }: LocalePageProps) {

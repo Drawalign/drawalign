@@ -10,6 +10,7 @@ import { PreviewBanner } from "@/components/layout/PreviewBanner";
 import { FullWidthImage } from "@/components/ui/FullWidthImage";
 import { StrapiImage } from "@/components/ui/StrapiImage";
 import { ThreeColCards } from "@/components/ui/ThreeColCards";
+import type { Locale } from "@/lib/i18n-paths";
 import { buildPageMetadata } from "@/lib/metadata";
 import { getGlobal, getHome } from "@/lib/strapi";
 import type { LocalePageProps } from "@/type";
@@ -18,7 +19,7 @@ export async function generateMetadata({ params }: LocalePageProps): Promise<Met
 	const { locale } = await params;
 	const [home, global] = await Promise.all([getHome(locale), getGlobal(locale)]);
 
-	return buildPageMetadata(home?.seo, global?.seo);
+	return buildPageMetadata(home?.seo, global?.seo, { route: "/", locale: locale as Locale });
 }
 
 export default async function HomePage({ params }: LocalePageProps) {

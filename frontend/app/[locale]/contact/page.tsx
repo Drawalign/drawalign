@@ -6,6 +6,7 @@ import { PageHero } from "@/components/ui/PageHero";
 import { Section } from "@/components/ui/Section";
 import { StrapiImage } from "@/components/ui/StrapiImage";
 import { TeamMemberCard } from "@/components/ui/TeamMemberCard";
+import type { Locale } from "@/lib/i18n-paths";
 import { buildPageMetadata } from "@/lib/metadata";
 import { getContactPage, getGlobal } from "@/lib/strapi";
 import type { LocalePageProps } from "@/type";
@@ -13,7 +14,7 @@ import type { LocalePageProps } from "@/type";
 export async function generateMetadata({ params }: LocalePageProps): Promise<Metadata> {
 	const { locale } = await params;
 	const [page, global] = await Promise.all([getContactPage(locale), getGlobal(locale)]);
-	return buildPageMetadata(page?.seo, global?.seo);
+	return buildPageMetadata(page?.seo, global?.seo, { route: "/contact", locale: locale as Locale });
 }
 
 export default async function ContactPage({ params }: LocalePageProps) {
