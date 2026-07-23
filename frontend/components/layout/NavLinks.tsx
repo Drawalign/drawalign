@@ -17,7 +17,7 @@ export function NavLinks({ items, variant, onNavigate }: Props) {
 
 	const linkClass =
 		variant === "header"
-			? "font-medium transition-colors hover:text-primary md:text-sm lg:text-lg"
+			? "whitespace-nowrap font-medium transition-colors hover:text-primary md:text-sm lg:text-base xl:text-lg"
 			: "rounded-md px-3 py-2 font-medium text-sm transition-colors hover:bg-muted hover:text-muted-foreground lg:text-lg";
 
 	return (
