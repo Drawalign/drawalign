@@ -31,7 +31,9 @@ export async function fetchAPI(
 	if (STRAPI_API_TOKEN) headers.Authorization = `Bearer ${STRAPI_API_TOKEN}`;
 	const response = await fetch(
 		url,
-		draft ? { cache: "no-store", headers } : { next: { tags: ["strapi-content"] }, headers },
+		draft
+			? { cache: "no-store", headers }
+			: { next: { revalidate: 3600, tags: ["strapi-content"] }, headers },
 	);
 	if (!response.ok) {
 		const body = await response.text().catch(() => "");
