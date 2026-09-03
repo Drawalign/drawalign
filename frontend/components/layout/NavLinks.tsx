@@ -2,6 +2,7 @@
 
 import { useLocale } from "next-intl";
 import { Link, usePathname } from "@/i18n/navigation";
+import { isExternalUrl, sanitizeUrl } from "@/lib/url";
 import { cn } from "@/lib/utils";
 import type { NavItem } from "@/type";
 
@@ -23,6 +24,21 @@ export function NavLinks({ items, variant, onNavigate }: Props) {
 	return (
 		<>
 			{items.map((item) => {
+				if (isExternalUrl(item.href)) {
+					return (
+						<a
+							key={item.id}
+							href={sanitizeUrl(item.href)}
+							target="_blank"
+							rel="noopener noreferrer"
+							onClick={onNavigate}
+							className={cn(linkClass, "text-foreground")}
+						>
+							{item.label}
+						</a>
+					);
+				}
+
 				const isActive = pathname === `/${item.href}`;
 				return (
 					<Link
