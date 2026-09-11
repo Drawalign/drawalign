@@ -4,17 +4,20 @@ import { useTranslations } from "next-intl";
 import { useState } from "react";
 
 import { Button } from "@/components/ui/button";
+import { ObfuscatedEmail } from "@/components/ui/ObfuscatedEmail";
+
+const CONTACT_EMAIL_ENCODED = "Y29udGFjdEBkcmF3LWFsaWduLmNvbQ==";
 
 export function ContactForm() {
   const t = useTranslations("contact");
   const [pending, setPending] = useState(false);
   const [success, setSuccess] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState(false);
 
   async function handleSubmit(e: React.SyntheticEvent<HTMLFormElement>) {
     e.preventDefault();
     setPending(true);
-    setError(null);
+    setError(false);
 
     const form = e.currentTarget;
     const data = {
@@ -38,7 +41,7 @@ export function ContactForm() {
       setSuccess(true);
       form.reset();
     } else {
-      setError(t("error"));
+      setError(true);
     }
   }
 
@@ -76,7 +79,11 @@ export function ContactForm() {
           className="resize-none rounded-lg bg-white px-4 py-3 outline-none focus:bg-white"
         />
       </div>
-      {error && <p className="text-red-300 text-sm">{error}</p>}
+      {error && (
+        <p className="text-red-300 text-sm">
+          {t("error")} <ObfuscatedEmail encoded={CONTACT_EMAIL_ENCODED} />
+        </p>
+      )}
       <div>
         <Button type="submit" variant="foreground" size="sm" disabled={pending}>
           {pending ? t("submitting") : t("submit")}

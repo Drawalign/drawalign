@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button";
+import { ObfuscatedEmail } from "@/components/ui/ObfuscatedEmail";
 import { StrapiImage } from "@/components/ui/StrapiImage";
 import type { TeamMember } from "@/type";
 
@@ -32,14 +32,14 @@ export function TeamMemberCard({
         {text && <p className="text-sm leading-none lg:text-2xl">{text}</p>}
         {cta && (
           <div className="mt-auto">
-            <Button
-              href={`mailto:${cta.href}`}
+            <ObfuscatedEmail
+              encoded={Buffer.from(cta.href).toString("base64")}
+              asButton
+              label={cta.label}
               variant="foreground"
               size="sm"
               arrow
-            >
-              {cta.label}
-            </Button>
+            />
           </div>
         )}
       </div>

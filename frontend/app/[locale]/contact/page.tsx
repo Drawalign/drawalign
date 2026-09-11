@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { getTranslations } from "next-intl/server";
 import { ContactForm } from "@/components/contact/ContactForm";
+import { ObfuscatedEmail } from "@/components/ui/ObfuscatedEmail";
 import { PageHero } from "@/components/ui/PageHero";
 import { Section } from "@/components/ui/Section";
 import { StrapiImage } from "@/components/ui/StrapiImage";
@@ -71,9 +72,7 @@ export default async function ContactPage({ params }: LocalePageProps) {
 									className="mr-2 inline-block"
 								/>
 								{page.mail && (
-									<a href={`mailto:${page.mail}`} className="">
-										{page.mail}
-									</a>
+									<ObfuscatedEmail encoded={Buffer.from(page.mail).toString("base64")} />
 								)}
 							</div>
 							<div>
