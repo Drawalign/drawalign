@@ -941,6 +941,56 @@ export interface ApiHomeHome extends Struct.SingleTypeSchema {
   };
 }
 
+export interface ApiMentionsLegaleMentionsLegale
+  extends Struct.SingleTypeSchema {
+  collectionName: 'mentions_legales';
+  info: {
+    displayName: 'Mentions l\u00E9gales';
+    pluralName: 'mentions-legales';
+    singularName: 'mentions-legale';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    content: Schema.Attribute.Blocks &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    hero: Schema.Attribute.Component<'shared.page-hero', false> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::mentions-legale.mentions-legale'
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    seo: Schema.Attribute.Component<'shared.seo', false> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiMethodeHldbMethodeHldb extends Struct.SingleTypeSchema {
   collectionName: 'methode_hldbs';
   info: {
@@ -1231,6 +1281,56 @@ export interface ApiPartenairePartenaire extends Struct.SingleTypeSchema {
   };
 }
 
+export interface ApiPolitiqueDeConfidentialitePolitiqueDeConfidentialite
+  extends Struct.SingleTypeSchema {
+  collectionName: 'politique_de_confidentialites';
+  info: {
+    displayName: 'Politique de confidentialit\u00E9';
+    pluralName: 'politique-de-confidentialites';
+    singularName: 'politique-de-confidentialite';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    content: Schema.Attribute.Blocks &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    hero: Schema.Attribute.Component<'shared.page-hero', false> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::politique-de-confidentialite.politique-de-confidentialite'
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    seo: Schema.Attribute.Component<'shared.seo', false> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiRessourceRessource extends Struct.SingleTypeSchema {
   collectionName: 'ressources';
   info: {
@@ -1426,7 +1526,7 @@ export interface ApiTeamMemberTeamMember extends Struct.CollectionTypeSchema {
     image: Schema.Attribute.Media<'images'> &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
-          localized: true;
+          localized: false;
         };
       }>;
     locale: Schema.Attribute.String;
@@ -1971,9 +2071,11 @@ declare module '@strapi/strapi' {
       'api::expertise.expertise': ApiExpertiseExpertise;
       'api::global.global': ApiGlobalGlobal;
       'api::home.home': ApiHomeHome;
+      'api::mentions-legale.mentions-legale': ApiMentionsLegaleMentionsLegale;
       'api::methode-hldb.methode-hldb': ApiMethodeHldbMethodeHldb;
       'api::page.page': ApiPagePage;
       'api::partenaire.partenaire': ApiPartenairePartenaire;
+      'api::politique-de-confidentialite.politique-de-confidentialite': ApiPolitiqueDeConfidentialitePolitiqueDeConfidentialite;
       'api::ressource.ressource': ApiRessourceRessource;
       'api::solution.solution': ApiSolutionSolution;
       'api::team-member.team-member': ApiTeamMemberTeamMember;
