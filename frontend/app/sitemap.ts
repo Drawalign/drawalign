@@ -17,6 +17,8 @@ const STATIC_ROUTES: PathnameKey[] = [
 	"/partenaires",
 	"/contact",
 	"/ressources",
+	"/mentions-legales",
+	"/politique-de-confidentialite",
 ];
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {

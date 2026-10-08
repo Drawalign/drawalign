@@ -10,6 +10,8 @@ export const routing = defineRouting({
 		"/solutions": "/solutions",
 		"/expertises": "/expertises",
 		"/contact": "/contact",
+		"/mentions-legales": "/mentions-legales",
+		"/politique-de-confidentialite": "/politique-de-confidentialite",
 		"/methode-hldb": "/methode-hldb",
 		"/partenaires": {
 			fr: "/partenaires",

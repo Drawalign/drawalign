@@ -6,6 +6,8 @@ import type {
 	ExpertisePage,
 	Global,
 	Home,
+	LegalPage,
+	LegalPageType,
 	MethodeHldbPage,
 	Page,
 	PartenairesPage,
@@ -329,6 +331,22 @@ export async function getContactPage(locale = "fr"): Promise<ContactPage | null>
 		return response.data;
 	} catch (err) {
 		console.error("[getContactPage] error:", err);
+		return null;
+	}
+}
+
+export async function getLegalPage(type: LegalPageType, locale = "fr"): Promise<LegalPage | null> {
+	try {
+		const query = qs.stringify(
+			{ populate: { seo: { populate: { ogImage: true } }, hero: true } },
+			{ encodeValuesOnly: true },
+		);
+		const response: StrapiSingleResponse<LegalPage> = await fetchAPI(`/${type}?${query}`, {
+			locale,
+		});
+		return response.data;
+	} catch (err) {
+		console.error(`[getLegalPage:${type}] error:`, err);
 		return null;
 	}
 }

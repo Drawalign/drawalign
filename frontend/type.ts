@@ -505,6 +505,16 @@ export type ContactPage = {
 	team_members: TeamMember[] | null;
 };
 
+export type LegalPageType = "mentions-legale" | "politique-de-confidentialite";
+
+export type LegalPage = {
+	id: number;
+	documentId: string;
+	seo: Seo | null;
+	hero: PageHeroData | null;
+	content: RichTextNode[] | null;
+};
+
 export type PartenairesPage = {
 	id: number;
 	documentId: string;
