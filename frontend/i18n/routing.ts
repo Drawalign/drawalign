@@ -19,5 +19,9 @@ export const routing = defineRouting({
 			fr: "/ressources",
 			en: "/resources",
 		},
+		"/ressources/[slug]": {
+			fr: "/ressources/[slug]",
+			en: "/resources/[slug]",
+		},
 	},
 });

@@ -1,8 +1,9 @@
 "use client";
 
+import { useParams } from "next/navigation";
 import { useLocale } from "next-intl";
+import { SiteLink } from "@/components/ui/SiteLink";
 import { Link, usePathname } from "@/i18n/navigation";
-import { isExternalUrl, sanitizeUrl } from "@/lib/url";
 import { cn } from "@/lib/utils";
 import type { NavItem } from "@/type";
 
@@ -14,6 +15,7 @@ type Props = {
 
 export function NavLinks({ items, variant, onNavigate }: Props) {
 	const pathname = usePathname();
+	const params = useParams();
 	const locale = useLocale();
 
 	const linkClass =
@@ -24,38 +26,24 @@ export function NavLinks({ items, variant, onNavigate }: Props) {
 	return (
 		<>
 			{items.map((item) => {
-				if (isExternalUrl(item.href)) {
-					return (
-						<a
-							key={item.id}
-							href={sanitizeUrl(item.href)}
-							target="_blank"
-							rel="noopener noreferrer"
-							onClick={onNavigate}
-							className={cn(linkClass, "text-foreground")}
-						>
-							{item.label}
-						</a>
-					);
-				}
-
 				const isActive = pathname === `/${item.href}`;
 				return (
-					<Link
+					<SiteLink
 						key={item.id}
-						href={`/${item.href}` as Parameters<typeof Link>[0]["href"]}
+						href={item.href}
 						onClick={onNavigate}
 						className={cn(linkClass, isActive ? "text-primary" : "text-foreground")}
 					>
 						{item.label}
-					</Link>
+					</SiteLink>
 				);
 			})}
 
 			{/* Locale switcher */}
 			<span className={cn(linkClass, "flex items-center gap-1 text-muted-foreground")}>
 				<Link
-					href={pathname}
+					// @ts-expect-error -- params are only valid with the dynamic pathname; next-intl resolves both at runtime
+					href={{ pathname, params }}
 					locale="fr"
 					onClick={onNavigate}
 					className={cn(
@@ -67,7 +55,8 @@ export function NavLinks({ items, variant, onNavigate }: Props) {
 				</Link>
 				<span className="opacity-30">|</span>
 				<Link
-					href={pathname}
+					// @ts-expect-error -- params are only valid with the dynamic pathname; next-intl resolves both at runtime
+					href={{ pathname, params }}
 					locale="en"
 					onClick={onNavigate}
 					className={cn(

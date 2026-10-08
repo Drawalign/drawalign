@@ -1,4 +1,3 @@
-import Link from "next/link";
 import {
 	FaFacebook,
 	FaGithub,
@@ -7,6 +6,7 @@ import {
 	FaXTwitter,
 	FaYoutube,
 } from "react-icons/fa6";
+import { SiteLink } from "@/components/ui/SiteLink";
 import { StrapiImage } from "@/components/ui/StrapiImage";
 import type { FooterData, NavItem } from "@/type";
 
@@ -85,13 +85,13 @@ export function Footer({ footer, siteName, sitemapItems }: Props) {
 						{sitemapItems.length ? (
 							<nav className="space-y-2">
 								{sitemapItems.map((link) => (
-									<Link
+									<SiteLink
 										key={link.id}
 										href={link.href}
 										className="block text-sm text-white transition-colors hover:text-muted-foreground"
 									>
 										{link.label}
-									</Link>
+									</SiteLink>
 								))}
 							</nav>
 						) : (
@@ -102,23 +102,23 @@ export function Footer({ footer, siteName, sitemapItems }: Props) {
 						{footer.legalLinks?.length ? (
 							<nav className="space-y-2">
 								{footer.legalLinks.slice(0, 2).map((link) => (
-									<Link
+									<SiteLink
 										key={link.id}
 										href={link.href}
 										className="block text-sm text-white transition-colors hover:text-muted-foreground"
 									>
 										{link.label}
-									</Link>
+									</SiteLink>
 								))}
 								{(footer.legalLinks[2] || footer.logo_esf) && (
 									<div className="mt-4 inline-flex flex-col gap-2">
 										{footer.legalLinks[2] && (
-											<Link
+											<SiteLink
 												href={footer.legalLinks[2].href}
 												className="text-sm transition-colors hover:text-muted-foreground"
 											>
 												{footer.legalLinks[2].label}
-											</Link>
+											</SiteLink>
 										)}
 										{footer.logo_esf && (
 											<div className="rounded-md bg-white p-2">

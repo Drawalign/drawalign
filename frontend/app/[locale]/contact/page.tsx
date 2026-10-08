@@ -65,7 +65,7 @@ export default async function ContactPage({ params }: LocalePageProps) {
 							{page.adress && <p className="whitespace-pre-line">{page.adress}</p>}
 							<div>
 								<Image
-									src="icon/mail.svg"
+									src="/icon/mail.svg"
 									alt="Email"
 									width={16}
 									height={16}
@@ -77,7 +77,7 @@ export default async function ContactPage({ params }: LocalePageProps) {
 							</div>
 							<div>
 								<Image
-									src="icon/phone.svg"
+									src="/icon/phone.svg"
 									alt="Phone"
 									width={16}
 									height={16}
